@@ -1,0 +1,7 @@
+$max-width-container-lg: 1100px;
+
+
+
+@mixin large-container {
+ max-width: $max-width-container-lg;
+}
