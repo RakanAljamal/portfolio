@@ -1,0 +1,138 @@
+@import "styles/variables/colors";
+
+@keyframes turnOnScreen {
+
+  0% {
+    transform: scale(0.1);
+  }
+
+  100% {
+    transform: scale(1);
+    top: 0;
+    right: 0;
+    background: #222;
+  }
+}@keyframes turnOffScreen {
+
+  0% {
+    background: #222;
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+    background: #fff;
+  }
+}
+
+@mixin screenSize {
+  width: 705px;
+  height: 352px;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+@mixin animation($keyframe) {
+  animation-name: $keyframe;
+  animation-duration: 0.5s;
+  animation-iteration-count: inherit;
+}
+.main {
+
+  overflow: hidden;
+  background: $light-white;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #000;
+  margin: 0 auto;
+  width: 705px;
+  height: 352px;
+  animation-duration: 4s;
+  z-index: 1;
+  @include screenSize;
+
+  &:before {
+    content: " ";
+    border: #ffffff40 9px solid;;
+    position: absolute;
+    border-radius: 1rem;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    z-index: -1;
+  }
+}
+.mediumPc {
+  position: absolute;
+  background: #fefefe;
+  border-top: 1px;
+  left: 0;
+  width: 100%;
+  border: 1px solid #000;
+  height: 60px;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  bottom: 20%;
+}
+.mediumIcon {
+  position: absolute;
+  background: #222;
+  border-top: 1px;
+  left: 47%;
+  width: 3%;
+  height: 20px;
+  border-radius: 50%;
+  bottom: 20%;
+  top: 73%;
+}
+.underlay {
+  position: absolute;
+  background: #d2cfd6;
+  border-top: 1px;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  left: 44%;
+  width: 10%;
+  height: 60px;
+  top: 80%;
+}
+.underlayBottom {
+  position: absolute;
+  background: #eaeaea;
+  border-top: 1px;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  left: 39%;
+  width: 20%;
+  height: 14px;
+  top: 91%;
+}
+.closeCodeScreen {
+  position: relative;
+  transform: scale(0);
+  z-index: 10;
+  @include animation(turnOffScreen);
+  @include screenSize;
+  border-radius: 5px;
+
+}
+.codeScreen {
+  transform: scale(1);
+  position: relative;
+  z-index: 10;
+  background: #222;
+  @include animation(turnOnScreen);
+  @include screenSize;
+  border-radius: 5px;
+
+}
+
+.screenContainer {
+  position: relative;
+}

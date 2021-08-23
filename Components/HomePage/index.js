@@ -3,70 +3,52 @@ import styles from './styles.module.scss';
 import { BottomHome, SectionDivider, TopHome } from "../../shared/svg";
 import Particles from 'react-particles-js';
 import { InfoCounter } from "../InfoCounter";
-import Home from "../../pages";
+import { params } from "../../config/particles";
+import Screen from "../Screen";
+import Navbar from "../Navbar";
 
 
-export const HomePage = ({ initialState } ) => {
+export const HomePage = ({ initialState }) => {
+    const [forceRender, setForceRender] = useState(true);
+    const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
+
+    useEffect(() => {
+        if (!forceRender) {
+            setForceRender(true);
+            setRandomState(prevRandom => {
+                let newRandom = initialState[Math.floor(Math.random() * initialState.length)];
+                while (newRandom === prevRandom) {
+                    newRandom = initialState[Math.floor(Math.random() * initialState.length)];
+                }
+                return newRandom;
+            });
+        }
+    }, [forceRender])
+
     return (
-        <div className={styles.homepageContainer}>
-            <div className={styles.particlesContainer}>
-                <Particles
-                    params={{
-                        particles: {
-                            number: {
-                                value: 160,
-                                density: {
-                                    enable: false
-                                }
-                            },
-                            size: {
-                                value: 3,
-                                random: true,
-                                anim: {
-                                    speed: 4,
-                                    size_min: 0.3
-                                }
-                            },
-                            line_linked: {
-                                enable: false
-                            },
-                            move: {
-                                random: true,
-                                speed: 1,
-                                direction: "top",
-                                out_mode: "out"
-                            }
-                        },
-                        interactivity: {
-                            events: {
-                                onhover: {
-                                    enable: true,
-                                    mode: "bubble"
-                                },
-                            },
-                            modes: {
-                                bubble: {
-                                    distance: 250,
-                                    duration: 2,
-                                    size: 0,
-                                    opacity: 0
-                                },
-                                repulse: {
-                                    distance: 400,
-                                    duration: 4
-                                }
-                            }
-                        }
-                    }}/>
-                <InfoCounter initialState={initialState}
-                             speed={40}
-                             dashTimer={400}
-                             timeToShow={2000} indicator={'_'}/>
+        <>
+            <Navbar />
+            <div className={styles.homepageContainer}>
+                <div className={styles.contactMe}></div>
+                <Screen changeScreen={15000}>
+                    {forceRender && <InfoCounter
+                        initialState={randomState}
+                        render={() => setForceRender(false)}
+                        speed={25}
+                        deleteSpeed={25}
+                        dashTimer={400}
+                        timeToShow={1000}
+                        timeToEnd={2000}
+                        indicator={"_"}
+                    />
 
-
+                    }
+                </Screen>
             </div>
             <SectionDivider/>
-        </div>
+
+        </>
+
     );
 };
 

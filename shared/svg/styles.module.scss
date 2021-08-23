@@ -1,9 +1,12 @@
 @import "styles/variables/colors";
 
 .homepage {
+  position: relative;
   fill: $primary-page;
 
   &:last-child {
     margin-top: -10px;
   }
+
 }
+

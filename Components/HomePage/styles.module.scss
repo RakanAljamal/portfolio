@@ -1,17 +1,50 @@
-
+@import "styles/variables/colors";
 
 .homepageContainer {
+  display: flex;
+  margin-top: 10%;
 }
 
 .particlesContainer {
   position: relative;
 }
 
-.whoami{
+.whoAmI {
+
+  font-family: 'Source Code Pro', monospace;
+  text-align: left;
   display: block;
   position: absolute;
-  color: #fff;
-  top: 40%;
+  color: $light-white;
+  top: 0;
   left: 50%;
+  width: 90%;
+
+  & p {
+    font-weight: 500;
+  }
+
   transform: translate(-50%, 0);
+}
+
+
+.rootUser {
+  color: greenyellow;
+  font-weight: 650;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.contactMe {
+  margin: 0 100px;
+  width: 30%;
+  height: 500px;
+  background: #222;
+  border-radius: 50px;
 }

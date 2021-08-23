@@ -1,12 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "../HomePage/styles.module.scss";
-import Parser from 'html-react-parser';
 
 let timer;
+let flashTimer;
+let reverseTimer;
 
 
+export const InfoCounter = ({ render, initialState, speed, timeToShow, dashTimer, indicator, timeToEnd, deleteSpeed }) => {
 
-export const InfoCounter = ({ initialState, speed, timeToShow, dashTimer, indicator }) => {
+
     const [running, setIsRunning] = useState(true);
     const [flashUnderscore, setFlashUnderscore] = useState(true);
     const [name, setName] = useState('');
@@ -31,8 +33,27 @@ export const InfoCounter = ({ initialState, speed, timeToShow, dashTimer, indica
         }
     }, [running])
 
+    useEffect(() => {
+        if (!running) {
+            clearInterval(timer);
 
-    let flashTimer;
+            setTimeout(() => {
+                reverseTimer = setInterval(() => {
+                    setName(prevState => {
+                        if (!prevState || prevState.length === 0) {
+                            clearInterval(reverseTimer);
+                            render();
+                        }
+
+                        return prevState.slice(0, -1)
+                    });
+                }, deleteSpeed)
+
+            }, timeToEnd)
+        }
+
+
+    }, [running])
 
     const flashSlash = () => {
         return setInterval(() => {
@@ -61,8 +82,8 @@ export const InfoCounter = ({ initialState, speed, timeToShow, dashTimer, indica
     }, [count])
 
     return (
-        <div className={styles.whoami}>
-            <h1>{name} {flashUnderscore && indicator}</h1>
+        <div className={styles.whoAmI}>
+            <p> <span className={styles.rootUser}>Rakan@WEBSITE $ </span>{name} <span className={flashUnderscore ? styles.hidden : styles.visible}>{indicator}</span></p>
         </div>
     )
 }
