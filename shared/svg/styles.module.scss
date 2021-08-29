@@ -10,3 +10,10 @@
 
 }
 
+
+.presentation {
+  position: absolute;
+  left: 45%;
+  z-index: 2;
+  transform: translateY( -50%);
+}

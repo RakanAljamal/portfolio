@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import React from "react";
-import { InfoCounter } from "../../Components/InfoCounter";
 
 const TopHome = () => <svg className={styles.homepage} xmlns="http://www.w3.org/2000/svg"
                            viewBox="0 0 1440 320">
@@ -16,7 +15,8 @@ const BottomHome = () => <svg className={styles.homepage} xmlns="http://www.w3.o
 </svg>
 
 
-export const SectionDivider = () => ( <div>
+export const SectionDivider = ({children}) => ( <div>
     <TopHome/>
+        <div className={styles.presentation}>{children}</div>
     <BottomHome/>
 </div> )

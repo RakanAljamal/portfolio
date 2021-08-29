@@ -4,44 +4,18 @@ import { SectionDivider } from "../../shared/svg";
 import { InfoCounter } from "../InfoCounter";
 import Screen from "../Screen";
 import Navbar from "../Navbar";
-import { motion } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
+import { expandDot, letter, rotateLogo, sentence, showLogo, skills, wave } from "./animations";
 
 const line = 'Hi, I\'m Rakan';
-const sentence = {
-    hidden: { opacity: 1 },
-    visible: {
-        opacity: 1,
-        transition: {
-            delay: 1,
-            staggerChildren: 0.09
-        }
-    }
-}
-const letter = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-        opacity: 1,
-        y: 0,
 
-    }
-}
-const wave = {
-    still: {
-        rotateZ: 0,
-        scale: 1.3
-    },
-    move: {
-        rotateZ: 10,
-        scale: 1.3,
-        transition: {
-            yoyo: 3,
-            delay: 1
-        }
-    }
-}
 export const HomePage = ({ initialState }) => {
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
+    const [expandDotAnimation, setExpandDotAnimation] = useState(false);
+    const [variant, toggleVariant] = useCycle(showLogo,rotateLogo)
+
+    const [loading,setLoading] = useState(true);
     const someRef = createRef();
     useEffect(() => {
         if (!forceRender) {
@@ -56,6 +30,20 @@ export const HomePage = ({ initialState }) => {
         }
     }, [forceRender])
 
+    useEffect(() => {
+        setTimeout(()=>{
+            setExpandDotAnimation(true);
+        },4000)
+
+        setTimeout(()=>{
+            toggleVariant();
+        },5000)
+        setLoading(false)
+    },[])
+
+    if(loading){
+        return <h1>Loading</h1>
+    }
     return (
         <>
             <Navbar/>
@@ -66,7 +54,8 @@ export const HomePage = ({ initialState }) => {
                                initial="hidden"
                                animate="visible"
                     >
-                        <motion.span style={{ display: "inline-block",marginRight:10 }} variants={wave} initial="still"
+                        <motion.span style={{ display: "inline-block", marginRight: 10 }} variants={wave}
+                                     initial="still"
                                      animate="move">👋
                         </motion.span>
                         {
@@ -102,7 +91,12 @@ export const HomePage = ({ initialState }) => {
                     }
                 </Screen>
             </div>
-            <SectionDivider/>
+            <SectionDivider>
+                <motion.div className={styles.dotSkills} variants={expandDotAnimation ? expandDot : skills} initial="hidden" animate="visible"/>
+                <motion.img variants={variant} initial="hidden" animate="visible" className={styles.logo}  alt="logo" src={`${window?.location.origin}/react.png`}/>
+                <motion.h1 className={styles.skills} variants={skills} initial="hidden" animate="visible">Skılls
+                </motion.h1>
+            </SectionDivider>
 
         </>
 
