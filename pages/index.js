@@ -8,15 +8,14 @@ export default function Home({ initialState }) {
     return (
         <div>
             <Head>
-                <style>
-                    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,200&display=swap');
-                    @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
-                    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Parisienne&display=swap');
-                    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');</style>
+                <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet"/>
+                <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"/>
                 <title>NextJS</title>
             </Head>
-            {/*<Particles*/}
-            {/*    params={params}/>*/}
+            <Particles
+                params={params}/>
             <HomePage initialState={initialState}/>
         </div>
     )

@@ -1,3 +1,4 @@
+@import "styles/variables/colors";
 @mixin navFont {
   font-family: 'Archivo Black', sans-serif;
   font-size: 15px;
@@ -26,7 +27,28 @@
     & > li {
       margin: 0 15px;
       display: inline-block;
+      color: darken($light-white,3);
       @include navFont;
+
+      &:hover{
+        color: $white;
+        cursor: pointer;
+      }
+      &:after {
+        content: '';
+        display: block;
+        margin:2px auto;
+        height: 2px;
+        width: 0;
+        background: transparent;
+        transition: width .5s ease, background-color .5s ease;
+      }
+
+
+      &:hover:after {
+        width: 100%;
+        background: $light-white;
+      }
     }
   }
 }

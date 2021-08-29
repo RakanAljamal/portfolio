@@ -24,8 +24,8 @@ export const params = {
 
         },
         move: {
-            speed: 1,
-            out_mode: "out"
+            speed: 0.1,
+            out_mode: "bounce"
         }
     },
     interactivity: {
