@@ -51,7 +51,7 @@ export const expandDot = {
     hidden: {
         opacity:1,
         y:-50,
-        scale:1
+        scale:1,
     },
     visible: {
         y:-13,
@@ -74,7 +74,7 @@ export const showLogo = {
         opacity:1,
         transition:{
             type:'spring',
-            delay:5
+            delay:3
         }
     }
 }
@@ -92,3 +92,32 @@ export const rotateLogo = {
         }
     }
 }
+
+export const snakeLogos = {
+    start: {
+        transition: {
+            staggerChildren: 0.51
+        }
+    },
+    end: {
+        transition: {
+            staggerChildren: 0.51
+        }
+    }
+}
+
+export const childLogo = {
+    start: {
+        x: 50,
+        opacity:0,
+    },
+    end: {
+        opacity:1,
+        x: 0,
+    }
+};
+
+export const loadingCircleTransition = {
+    duration: 1,
+    ease: "easeInOut"
+};

@@ -1,22 +1,22 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { SectionDivider } from "../../shared/svg";
 import { InfoCounter } from "../InfoCounter";
 import Screen from "../Screen";
 import Navbar from "../Navbar";
-import { motion, useCycle } from "framer-motion";
-import { expandDot, letter, rotateLogo, sentence, showLogo, skills, wave } from "./animations";
+import { motion } from "framer-motion";
+import { letter, sentence, wave } from "./animations";
+import { useOnScreen } from "../../shared/useOnScreen";
+import Skills from "../Skills";
 
 const line = 'Hi, I\'m Rakan';
 
 export const HomePage = ({ initialState }) => {
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
-    const [expandDotAnimation, setExpandDotAnimation] = useState(false);
-    const [variant, toggleVariant] = useCycle(showLogo,rotateLogo)
+    const [loading, setLoading] = useState(true);
+    const [showSkills, setShowSkills] = useState(false);
 
-    const [loading,setLoading] = useState(true);
-    const someRef = createRef();
     useEffect(() => {
         if (!forceRender) {
             setForceRender(true);
@@ -31,17 +31,10 @@ export const HomePage = ({ initialState }) => {
     }, [forceRender])
 
     useEffect(() => {
-        setTimeout(()=>{
-            setExpandDotAnimation(true);
-        },4000)
-
-        setTimeout(()=>{
-            toggleVariant();
-        },5000)
         setLoading(false)
-    },[])
+    }, [])
 
-    if(loading){
+    if (loading) {
         return <h1>Loading</h1>
     }
     return (
@@ -87,17 +80,12 @@ export const HomePage = ({ initialState }) => {
                         timeToEnd={2000}
                         indicator={"_"}
                     />
-
                     }
                 </Screen>
             </div>
-            <SectionDivider>
-                <motion.div className={styles.dotSkills} variants={expandDotAnimation ? expandDot : skills} initial="hidden" animate="visible"/>
-                <motion.img variants={variant} initial="hidden" animate="visible" className={styles.logo}  alt="logo" src={`${window?.location.origin}/react.png`}/>
-                <motion.h1 className={styles.skills} variants={skills} initial="hidden" animate="visible">Skılls
-                </motion.h1>
+            <SectionDivider showSkills={showSkills} setShowSkills={setShowSkills} >
+                {showSkills && <Skills/>}
             </SectionDivider>
-
         </>
 
     );

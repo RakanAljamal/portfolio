@@ -72,11 +72,10 @@
 .logo{
   position: absolute;
   height: 280px;
-  width: 390px;
+  max-width:  390px;
   z-index: 1;
   left: -62px;
   bottom: 33px;
-  background-image: url('/react.png');
 }
 .dotSkills {
   position: absolute;
@@ -95,3 +94,26 @@
   color: #6b6ba7;
 }
 
+.skillsLogoContainer{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: -500px;
+  top: 0px;
+}
+
+.skillsLogo {
+  display: inline-block;
+  position: relative;
+  height: 200px;
+  max-width:  300px;
+  margin: 0 40px;
+  &:nth-child(2){
+    margin-right: 200px;
+    right: 150px;
+  }
+  &:nth-child(1){
+    right: 150px;
+  }
+
+}
