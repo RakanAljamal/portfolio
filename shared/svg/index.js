@@ -1,7 +1,8 @@
 import styles from "./styles.module.scss";
-import React, { createRef, useEffect, useState } from "react";
+import React, { createRef, useContext, useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import { isElementViewable } from "../utils";
+import { scrollAnimationType, ScrollContext } from "../../Components/ScrollProvider";
 
 const svgVariant = {
     initial: {
@@ -25,22 +26,9 @@ const TopHome = ({ showSkills }) => <motion.svg
     />
 </motion.svg>
 
-const BottomHome = ({ showSkills, setShowSkills }) => {
-    const ref = createRef();
-    const [scrollLock, setScrollLock] = useState(false);
-    useEffect(() => {
-        if (!scrollLock) {
-            window.onscroll = () => {
-                if (isElementViewable(ref.current)) {
-                    setShowSkills(true);
-                    setScrollLock(true);
-                }
-            }
-        }
-    }, [])
+const BottomHome = ({ showSkills }) => {
 
-    return <motion.svg ref={ref}
-                       variants={showSkills ? svgVariant : null} initial={{ fill: "#F7F7FF" }} animate="end"
+    return <motion.svg variants={showSkills ? svgVariant : null} initial={{ fill: "#F7F7FF" }} animate="end"
                        className={styles.homepage}
                        xmlns="http://www.w3.org/2000/svg"
                        viewBox="0 0 1440 320">
@@ -50,8 +38,8 @@ const BottomHome = ({ showSkills, setShowSkills }) => {
 }
 
 
-export const SectionDivider = ({ showSkills, setShowSkills, children, ref }) => ( <div>
+export const SectionDivider = ({ showSkills, children }) => ( <div>
     <TopHome showSkills={showSkills}/>
     <div className={styles.presentation}>{children}</div>
-    <BottomHome showSkills={showSkills} setShowSkills={setShowSkills} ref={ref}/>
+    <BottomHome showSkills={showSkills} />
 </div> )

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { SectionDivider } from "../../shared/svg";
 import { InfoCounter } from "../InfoCounter";
@@ -6,15 +6,24 @@ import Screen from "../Screen";
 import Navbar from "../Navbar";
 import Skills from "../Skills";
 import ShowMyInfo from "../ShowMyInfo";
-import ProjectCard from "../ProjectCard";
+import { scrollAnimationType, ScrollContext } from "../ScrollProvider";
+import { useMouseWheel, useScroll } from "react-use";
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 
 export const HomePage = ({ initialState }) => {
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [loading, setLoading] = useState(true);
-    const [showSkills, setShowSkills] = useState(false);
+    const {showSkillsAnimation,showAnimation} = useContext(ScrollContext);
 
+    useScrollPosition(
+        ({ prevPos, currPos }) => {
+            console.log(currPos)
+        },
+        [],
+    )
+            ;
     useEffect(() => {
         if (!forceRender) {
             setForceRender(true);
@@ -30,11 +39,13 @@ export const HomePage = ({ initialState }) => {
 
     useEffect(() => {
         setLoading(false)
+        showAnimation(scrollAnimationType.Skills)
     }, [])
 
     if (loading) {
         return <h1>Loading</h1>
     }
+
     return (
         <>
             <Navbar/>
@@ -54,37 +65,9 @@ export const HomePage = ({ initialState }) => {
                     }
                 </Screen>
             </div>
-            <SectionDivider showSkills={showSkills} setShowSkills={setShowSkills} >
-                {showSkills && <Skills/>}
+            <SectionDivider showSkills={showSkillsAnimation} >
+                {showSkillsAnimation && <Skills/>}
             </SectionDivider>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <ProjectCard src={`${window?.location.origin}/card-1.png`} />
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
             <br/>
             <br/>
         </>
