@@ -1,4 +1,4 @@
-export function useOnScreen(element) {
+export function isElementViewable(element) {
     if(!element){
         return false;
     }

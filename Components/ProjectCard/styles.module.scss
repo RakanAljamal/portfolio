@@ -1,0 +1,16 @@
+.cardContainer {
+  display: flex;
+  margin-left: 20%;
+  position: relative;
+  height: 900px;
+  z-index: 10;
+}
+
+.cardImage{
+  height: 900px;
+  width: 1600px;
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 500px;
+}
