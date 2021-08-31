@@ -6,24 +6,31 @@ import Screen from "../Screen";
 import Navbar from "../Navbar";
 import Skills from "../Skills";
 import ShowMyInfo from "../ShowMyInfo";
-import { scrollAnimationType, ScrollContext } from "../ScrollProvider";
-import { useMouseWheel, useScroll } from "react-use";
+import { animationType, ScrollContext } from "../ScrollProvider";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+import ProjectCard, { ProjectDetails } from "../ProjectCard";
 
 
 export const HomePage = ({ initialState }) => {
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [loading, setLoading] = useState(true);
-    const {showSkillsAnimation,showAnimation} = useContext(ScrollContext);
+    const { showSkillsAnimation,showProjectsCardAnimation, showAnimation } = useContext(ScrollContext);
 
     useScrollPosition(
-        ({ prevPos, currPos }) => {
-            console.log(currPos)
+        ({ currPos }) => {
+            console.log(currPos.y)
+            if (currPos.y <= -375) {
+                showAnimation(animationType.Skills);
+            }
+
+            if(currPos.y <= -525) {
+                showAnimation(animationType.Cards);
+            }
+
         },
-        [],
-    )
-            ;
+        [showSkillsAnimation],
+    );
     useEffect(() => {
         if (!forceRender) {
             setForceRender(true);
@@ -39,7 +46,6 @@ export const HomePage = ({ initialState }) => {
 
     useEffect(() => {
         setLoading(false)
-        showAnimation(scrollAnimationType.Skills)
     }, [])
 
     if (loading) {
@@ -50,7 +56,7 @@ export const HomePage = ({ initialState }) => {
         <>
             <Navbar/>
             <div className={styles.homepageContainer}>
-                <ShowMyInfo />
+                <ShowMyInfo/>
                 <Screen changeScreen={15000}>
                     {forceRender && <InfoCounter
                         initialState={randomState}
@@ -65,15 +71,24 @@ export const HomePage = ({ initialState }) => {
                     }
                 </Screen>
             </div>
-            <SectionDivider showSkills={showSkillsAnimation} >
+            <SectionDivider showSkills={showSkillsAnimation}>
                 {showSkillsAnimation && <Skills/>}
             </SectionDivider>
+            <br/>
+            { <ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation} src={`${window?.location.origin}/card-2.png`}/>}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <br/>
             <br/>
         </>
 
     );
-};
+}
 
 
 

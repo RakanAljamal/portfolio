@@ -7,7 +7,7 @@ export const ScrollContext = createContext({
     }
 })
 
-export const scrollAnimationType = {
+export const animationType = {
     Skills:'skills',
     Cards:'cards'
 }
@@ -17,10 +17,10 @@ export const ScrollProvider = ({ children }) => {
 
     const showAnimation = (type) => {
         switch (type) {
-            case scrollAnimationType.Cards:
+            case animationType.Cards:
                 setShowProjectsCardAnimation(true);
                 break;
-            case scrollAnimationType.Skills:
+            case animationType.Skills:
                 setShowSkillsAnimation(true);
                 break;
             default:

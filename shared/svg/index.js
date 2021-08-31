@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import React, { createRef, useContext, useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import { isElementViewable } from "../utils";
-import { scrollAnimationType, ScrollContext } from "../../Components/ScrollProvider";
+import { animationType, ScrollContext } from "../../Components/ScrollProvider";
 
 const svgVariant = {
     initial: {
