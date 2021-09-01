@@ -23,6 +23,7 @@ const menuItemVariant = {
     visible: {
         opacity: 1,
         y: 0,
+        fontSize:'19px',
         transition: {
             duration:0.5,
             type:"spring",
@@ -32,22 +33,24 @@ const menuItemVariant = {
     }
 }
 
-const Navbar = () => {
+const Navbar = ({fixed}) => {
   return (
-    <div className={styles.navbar}>
-      <div className={styles.navbarContainer}>
-        <span className={styles.me}>Logo</span>
-        <motion.div variants={navbarVariant} initial="hidden" animate="visible" className={styles.menu}>
-          <ul>
-            <motion.li variants={menuItemVariant}>Intro</motion.li>
-            <motion.li variants={menuItemVariant}>Skills</motion.li>
-            <motion.li variants={menuItemVariant}>Projects</motion.li>
-          </ul>
-        </motion.div>
-        <div>
-          <span className={styles.contact}>Contact</span>
+    <div className={fixed ? styles.fixedNavbar : styles.navbar}>
+        <div className={fixed && styles.fixedNavbarContainer}>
+            <div className={styles.navbarGroup}>
+                <span className={styles.me}>Rakan</span>
+                <motion.div variants={navbarVariant} initial="hidden" animate="visible" className={styles.menu}>
+                    <ul>
+                        <motion.li variants={menuItemVariant}>Intro</motion.li>
+                        <motion.li variants={menuItemVariant}>Skills</motion.li>
+                        <motion.li variants={menuItemVariant}>Projects</motion.li>
+                    </ul>
+                </motion.div>
+                <div>
+                    <span className={styles.contact}>Contact</span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
   );
 };

@@ -27,8 +27,11 @@ export const HomePage = ({ initialState }) => {
     const [loading, setLoading] = useState(true);
     const { showSkillsAnimation,showProjectsCardAnimation, showAnimation } = useContext(ScrollContext);
     const [showMyProject, setShowMyProject] = useState(false);
+    const [fixedNavbar,setFixedNavbar] = useState(false);
     useScrollPosition(
         ({ currPos }) => {
+            setFixedNavbar(currPos.y <= -75);
+
             if (currPos.y <= -375) {
                 showAnimation(animationType.Skills);
             }
@@ -43,6 +46,7 @@ export const HomePage = ({ initialState }) => {
             if(currPos.y <= -2800) {
                 showAnimation(animationType.Cards,1);
             }
+
         },
         [showSkillsAnimation],
     );
@@ -73,7 +77,7 @@ export const HomePage = ({ initialState }) => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar fixed={fixedNavbar}/>
             <div className={styles.homepageContainer}>
                 <ShowMyInfo/>
                 <Screen changeScreen={15000}>
