@@ -1,103 +1,96 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { motion } from "framer-motion";
+import { cardInfo, cardCollapse, cardOpenDuration, card, cardInfoCollapse, cardContainer } from './animations';
+import AnimatedCharacters from "./AnimatedCharacters";
 
-const cardWidth = 1200;
-let cardHeight = 600;
-let cardOpenDuration = 1;
+export const MyProject = ({show}) => {
+    const [replay, setReplay] = useState(true);
+    // Placeholder text data, as if from API
+    const placeholderText = [
+        { type: "heading1", text: "Projects & Experience" },
+    ];
 
-const cardInfoWidth = 650;
-const cardInfoHeight = 650;
-const card = {
-    start: {
-        width: 0,
-    },
-    end: {
-        width: cardWidth,
-        transition: {
-            duration: cardOpenDuration,
-            ease: "easeInOut"
+    const container = {
+        visible: {
+            width:'100%',
+            transition: {
+                duration:3,
+                staggerChildren: 0.025
+            }
         }
+    };
+
+    if(!show){
+        return <div style={{minHeight:100}}/>;
     }
+
+    return (
+        <motion.div
+            style={{textAlign:'center'}}
+            initial="hidden"
+            animate="visible"
+            variants={container}
+        >
+            <div className="container">
+                {placeholderText.map((item, index) => {
+                    return <AnimatedCharacters {...item} key={index} />;
+                })}
+            </div>
+
+        </motion.div>
+    );
 }
+export const ProjectDetails = (props) => {
+    return (
+        <div className={styles.projectDetailsContainer}>
+            <ProjectInfo {...props}/>
+            <ProjectCard  {...props} />
+        </div>
+    )
+};
 
 
-const cardCollapse = {
-    start: {
-        width: cardWidth,
-        left: cardWidth,
-        backgroundColor: 'white',
-    },
-    end: {
-        width: cardWidth,
-        backgroundColor: 'white',
-        left: 2 * cardHeight,
-        transition: {
-            animationDirection: '',
-            duration: 1,
-            ease: "easeInOut"
-        }
-    }
-}
-const cardInfo = {
-    start: {
-        width: 0,
-    },
-    end: {
-        width: cardInfoWidth,
-        transition: {
-            delay: 0.2,
-            duration: cardOpenDuration,
-            ease: "easeInOut"
-        }
-    }
-}
-
-
-const cardInfoCollapse = {
-    start: {
-        width: cardInfoWidth,
-        left: cardInfoWidth,
-        backgroundColor: '#fefefe',
-    },
-    end: {
-        width: cardInfoWidth,
-        backgroundColor: '#fff',
-        left: 2 * cardInfoWidth,
-        transition: {
-            delay:0.5,
-            animationDirection: '',
-            duration: 1,
-            ease: "easeInOut"
-        }
-    }
-}
-export const ProjectInfo = () => {
+const ProjectInfo = ({ showProjectsCardAnimation,title,details }) => {
     const [cardInfoVariant, setCardInfoVariant] = useState(cardInfo);
     const [showCardDetails, setShowCardDetails] = useState(false);
     useEffect(() => {
-        setTimeout(() => {
-            setCardInfoVariant(cardInfoCollapse)
-            setShowCardDetails(true);
-        }, 1500 * cardOpenDuration)
+        if (showProjectsCardAnimation) {
+            setTimeout(() => {
+                setCardInfoVariant(cardInfoCollapse)
+                setShowCardDetails(true);
+            }, 1500 * cardOpenDuration)
+        }
 
-    })
-    return <div className={styles.cardInfoContainer}>
-        <motion.div variants={cardInfoVariant} initial="start" animate="end"  className={styles.cardInfoOverlay}/>
+    }, [showProjectsCardAnimation])
+
+    if (!showProjectsCardAnimation) {
+        return <div className={styles.cardInfoContainer}/>
+    }
+
+    return <motion.div variants={showCardDetails ? cardContainer : null} initial="start" animate="end"
+                       className={styles.cardInfoContainer}>
+        <motion.div variants={cardInfoVariant} initial="start" animate="end" className={styles.cardInfoOverlay}/>
 
         {showCardDetails && <div className={styles.cardInfoDetails}>
-            <h2>Sajilni</h2>
-            <div className={styles.projectDetails}>
-                Manage the whole application infrastructure including
-                the front-end, back-end,
-                and Cloud Provider.
-            </div>
+            <h2>{title}</h2>
+            <div className={styles.projectDetails}>{details}</div>
         </div>}
-    </div>
+    </motion.div>
 }
 
-const ProjectCard = ({ src, showProjectsCardAnimation }) => {
-    const [variant, setVariant] = useState(card);
+const ProjectCard = ({ src, showProjectsCardAnimation, animationColor }) => {
+    let animateCard = card;
+    if(animationColor){
+        animateCard = {
+            ...card,
+            start: {
+                ...card.start,
+                backgroundColor: animationColor
+            }
+        }
+    }
+    const [variant, setVariant] = useState(animateCard);
     const [showImage, setShowImage] = useState(false);
     useEffect(() => {
         if (showProjectsCardAnimation) {
@@ -109,7 +102,7 @@ const ProjectCard = ({ src, showProjectsCardAnimation }) => {
     }, [showProjectsCardAnimation])
     return (
         <div className={styles.projectContainer}>
-            <div style={{background:showImage && '#222'}} className={styles.animationContainer}>
+            <div style={{ background: showImage && '#000' }} className={styles.animationContainer}>
                 {showImage && <motion.img variants={card} className={styles.cardImage}
                                           src={src}
                                           alt="image"/>}
@@ -124,14 +117,3 @@ const ProjectCard = ({ src, showProjectsCardAnimation }) => {
     );
 };
 
-
-export const ProjectDetails = (props) => {
-    return (
-        <div className={styles.projectDetailsContainer}>
-            <ProjectInfo/>
-            <ProjectCard  {...props} />
-        </div>
-    )
-};
-
-export default ProjectCard;
