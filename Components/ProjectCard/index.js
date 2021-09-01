@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { cardInfo, cardCollapse, cardOpenDuration, card, cardInfoCollapse, cardContainer } from './animations';
 import AnimatedCharacters from "./AnimatedCharacters";
 
-export const MyProject = ({show}) => {
+export const MyProject = ({ show }) => {
     const [replay, setReplay] = useState(true);
     // Placeholder text data, as if from API
     const placeholderText = [
@@ -13,28 +13,28 @@ export const MyProject = ({show}) => {
 
     const container = {
         visible: {
-            width:'100%',
+            width: '100%',
             transition: {
-                duration:3,
+                duration: 3,
                 staggerChildren: 0.025
             }
         }
     };
 
-    if(!show){
-        return <div style={{minHeight:100}}/>;
+    if (!show) {
+        return <div style={{ minHeight: 100 }}/>;
     }
 
     return (
         <motion.div
-            style={{textAlign:'center'}}
+            style={{ textAlign: 'center' }}
             initial="hidden"
             animate="visible"
             variants={container}
         >
             <div className="container">
                 {placeholderText.map((item, index) => {
-                    return <AnimatedCharacters {...item} key={index} />;
+                    return <AnimatedCharacters {...item} key={index}/>;
                 })}
             </div>
 
@@ -51,7 +51,7 @@ export const ProjectDetails = (props) => {
 };
 
 
-const ProjectInfo = ({ showProjectsCardAnimation,title,details }) => {
+const ProjectInfo = ({ showProjectsCardAnimation,title,details,animationColor,items, href }) => {
     const [cardInfoVariant, setCardInfoVariant] = useState(cardInfo);
     const [showCardDetails, setShowCardDetails] = useState(false);
     useEffect(() => {
@@ -68,6 +68,10 @@ const ProjectInfo = ({ showProjectsCardAnimation,title,details }) => {
         return <div className={styles.cardInfoContainer}/>
     }
 
+    function handleHref() {
+        window.location.href = href;
+    }
+
     return <motion.div variants={showCardDetails ? cardContainer : null} initial="start" animate="end"
                        className={styles.cardInfoContainer}>
         <motion.div variants={cardInfoVariant} initial="start" animate="end" className={styles.cardInfoOverlay}/>
@@ -75,13 +79,17 @@ const ProjectInfo = ({ showProjectsCardAnimation,title,details }) => {
         {showCardDetails && <div className={styles.cardInfoDetails}>
             <h2>{title}</h2>
             <div className={styles.projectDetails}>{details}</div>
+            <ul className={styles.itemSkills}>
+                {items.map(item => ( <li>{item}</li> ))}
+            </ul>
+            <div style={{background:animationColor}} onClick={handleHref} className={styles.website}>Website</div>
         </div>}
     </motion.div>
 }
 
 const ProjectCard = ({ src, showProjectsCardAnimation, animationColor }) => {
     let animateCard = card;
-    if(animationColor){
+    if (animationColor) {
         animateCard = {
             ...card,
             start: {

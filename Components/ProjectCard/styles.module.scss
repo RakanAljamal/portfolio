@@ -1,6 +1,9 @@
+$card-info-height : 900;
+$card-height : 720;
+
 .cardContainer {
   background: #fff;
-  height: 600px;
+  height: $card-height + px;
   width: 1200px;
   z-index: 0;
   display: block;
@@ -11,7 +14,7 @@
 }
 
 .cardImage {
-  height: 600px;
+  height: $card-height + px;
   width: 1200px;
   display: block;
   position: absolute;
@@ -34,7 +37,7 @@
 
 .animationContainer {
   position: relative;
-  height: 600px;
+  height: $card-height + px;
   width: 1200px;
   overflow: hidden;
   border-radius: 5px;
@@ -42,19 +45,20 @@
 
 
 .cardInfoContainer {
-  height: 600px;
+
+  height: $card-info-height + px;
   display: block;
   width: 600px;
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 5%;
+  left: 15%;
   z-index: 1;
   overflow: hidden;
   opacity: 1;
 }
 
 .cardInfoOverlay {
-  height: 600px;
+  height: $card-info-height + px;
   display: block;
   width: 600px;
   background: #fefefe;
@@ -68,9 +72,10 @@
 }
 
 .cardInfoDetails {
+  margin-top: 50px;
   position: absolute;
   width: 600px;
-  height: 600px;
+  height: $card-info-height + px;
   background: #fff;
   font-family: 'Bigshot One', cursive;
   font-size: 28px;
@@ -103,4 +108,40 @@
   font-family: "Space Grotesk", sans-serif;
   font-size: 50px;
 
+}
+
+.itemSkills {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+
+  li {
+    font-family: monospace;
+    border-bottom: 1px dotted #BBB;
+    background: #fff;
+    color: #222;
+
+    &:nth-child(2n){
+      background: #fafafa;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+.website {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 80%;
+  width: 100%;
+  background: #6b6ba7;
+  color:#fff;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }

@@ -33,13 +33,14 @@ export const HomePage = ({ initialState }) => {
                 showAnimation(animationType.Skills);
             }
             setShowMyProject(currPos.y <= -925  && currPos.y >= -2125);
+            console.log(currPos.y);
 
-            if(currPos.y <= -1400) {
+            if(currPos.y <= -2000) {
                 showAnimation(animationType.Cards,0);
             }
 
 
-            if(currPos.y <= -2000) {
+            if(currPos.y <= -2800) {
                 showAnimation(animationType.Cards,1);
             }
         },
@@ -99,15 +100,17 @@ export const HomePage = ({ initialState }) => {
                                  src={`${window?.location.origin}/card-1.png`}
                                  animationColor='#000586'
                                  title="Weight Watchers"
+                                 href={"https://www.ww.com/us/find-a-workshop"}
                                  details={weightDetails}
-                                 items=""
+                                 items={['NextJS','NodeJS','GraphQL','Express']}
                 />}
                 {<ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[1]}
                                  src={`${window?.location.origin}/card-2.png`}
                                  title="Sajilni"
+                                 href="https://www.sajilni.com"
                                  animationColor='#98D551'
                                  details={sajilniDetails}
-                                 items=""
+                                 items={['MYSQL','AWS','Spring','JQuery']}
                 />}
                 <br/>
                 <br/>
