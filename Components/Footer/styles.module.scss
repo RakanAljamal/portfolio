@@ -1,0 +1,33 @@
+@import "Components/HomePage/styles.module";
+
+.contactMeFooter {
+  @include contactMe;
+  width: 100%;
+  text-align: center;
+  margin: 100px 0 200px 0;
+}
+
+.contactMeCTA {
+  position: relative;
+  padding: 0 10px;
+  display: inline-block;
+
+  span {
+    &:hover {
+      cursor: pointer;
+    }
+
+    position: relative;
+    z-index: 2;
+  }
+
+
+}
+
+.contactMeBackground {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  position: absolute;
+
+}

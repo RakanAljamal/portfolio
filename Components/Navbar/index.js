@@ -47,7 +47,7 @@ const Navbar = ({ fixed }) => {
                         </ul>
                     </motion.div>
                     <div>
-                        <span className={styles.contact}>Contact Me</span>
+                        <span className={styles.lightContact}>Contact Me</span>
                     </div>
                 </div>
             </div>
