@@ -9,6 +9,7 @@ import ShowMyInfo from "../ShowMyInfo";
 import { animationType, ScrollContext } from "../ScrollProvider";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { MyProject, ProjectDetails } from "../ProjectCard";
+import FixedNavbar from "../Navbar/FixedNavbar";
 
 const sajilniDetails = '\n' +
     '                Manage the whole application infrastructure including\n' +
@@ -30,7 +31,7 @@ export const HomePage = ({ initialState }) => {
     const [fixedNavbar,setFixedNavbar] = useState(false);
     useScrollPosition(
         ({ currPos }) => {
-            setFixedNavbar(currPos.y <= -75);
+            setFixedNavbar(currPos.y <= -1500);
 
             if (currPos.y <= -375) {
                 showAnimation(animationType.Skills);
@@ -78,6 +79,7 @@ export const HomePage = ({ initialState }) => {
     return (
         <>
             <Navbar fixed={fixedNavbar}/>
+            <FixedNavbar fixed={fixedNavbar} />
             <div className={styles.homepageContainer}>
                 <ShowMyInfo/>
                 <Screen changeScreen={15000}>

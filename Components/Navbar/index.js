@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styles from './styles.module.scss';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const navbarVariant = {
-    hidden:{
+    hidden: {
         transition: {
             staggerChildren: 0.51
         }
     },
-    visible:{
+    visible: {
         transition: {
             staggerChildren: 0.51
         }
@@ -23,36 +23,41 @@ const menuItemVariant = {
     visible: {
         opacity: 1,
         y: 0,
-        fontSize:'19px',
+        fontSize: '19px',
         transition: {
-            duration:0.5,
-            type:"spring",
-            stiffness:100,
-            mass:0.5
+            duration: 0.5,
+            type: "spring",
+            stiffness: 100,
+            mass: 0.5
         }
     }
 }
 
-const Navbar = ({fixed}) => {
-  return (
-    <div className={fixed ? styles.fixedNavbar : styles.navbar}>
-        <div className={fixed && styles.fixedNavbarContainer}>
-            <div className={styles.navbarGroup}>
-                <span className={styles.me}>Rakan</span>
-                <motion.div variants={navbarVariant} initial="hidden" animate="visible" className={styles.menu}>
-                    <ul>
-                        <motion.li variants={menuItemVariant}>Intro</motion.li>
-                        <motion.li variants={menuItemVariant}>Skills</motion.li>
-                        <motion.li variants={menuItemVariant}>Projects</motion.li>
-                    </ul>
-                </motion.div>
-                <div>
-                    <span className={styles.contact}>Contact</span>
+const Navbar = ({ fixed }) => {
+
+    const variant = useMemo(()=>{
+       menuItemVariant
+    },[])
+    return <AnimatePresence>
+        {!fixed && <motion.div animate={{ y: 0 }} initial={{ y: -100 }} exit={{ y: -100 }} className={styles.navbar}>
+            <div>
+                <div className={styles.navbarGroup}>
+                    <motion.div variants={navbarVariant} initial="hidden" animate="visible" className={styles.menu}>
+                        <ul>
+                            <motion.li variants={variant}>Intro</motion.li>
+                            <motion.li variants={variant}>Skills</motion.li>
+                            <motion.li variants={variant}>Projects</motion.li>
+                        </ul>
+                    </motion.div>
+                    <div>
+                        <span className={styles.contact}>Contact Me</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-  );
+        </motion.div>
+        }
+    </AnimatePresence>
+
 };
 
 export default Navbar;
