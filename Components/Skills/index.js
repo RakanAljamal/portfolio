@@ -14,7 +14,7 @@ import {
 const logos = ['aws','node','docker']
 const Skills = () => {
     const [expandDotAnimation, setExpandDotAnimation] = useState(false);
-    const [variant, toggleVariant] = useCycle(showLogo,rotateLogo);
+    const [variant, toggleVariant] = useCycle(showLogo);
     const [showAllSkills,setShowAllSkills] = useState(false);
 
     useEffect(() => {
@@ -31,12 +31,12 @@ const Skills = () => {
             setShowAllSkills(true);
         }, 5000)
 
-    }, [])
+    }, [toggleVariant])
     return (
         <div>
             <motion.div className={styles.dotSkills} variants={expandDotAnimation ? expandDot : skills} initial="hidden"
                         animate="visible"/>
-            <motion.img variants={variant} initial="hidden" animate="visible" className={styles.logo} alt="logo"
+            <motion.img variants={showLogo} initial="hidden" animate="visible" className={styles.logo} alt="logo"
                         src={`${window?.location.origin}/react.png`}/>
             {showAllSkills && <motion.div
                 className={styles.skillsLogoContainer}
@@ -44,9 +44,9 @@ const Skills = () => {
                 initial="start"
                 animate="end"
             >
-                {logos.map(logo => {
+                {logos.map((logo,idx) => {
                     return (
-                        <motion.img variants={childLogo} transition={loadingCircleTransition}
+                        <motion.img key={`logo-${idx}`} variants={childLogo} transition={loadingCircleTransition}
                                     className={styles.skillsLogo} alt="logo"
                                     src={`${window?.location.origin}/${logo}.png`}/>
                     )

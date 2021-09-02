@@ -7,7 +7,7 @@ const Screen = ({ children, refresh, changeScreen }) => {
         setInterval(() => {
             setShowScreen(toggle => !toggle);
         }, changeScreen)
-    }, [])
+    }, [changeScreen])
 
 
     return (

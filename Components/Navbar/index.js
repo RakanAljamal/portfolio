@@ -23,7 +23,7 @@ const menuItemVariant = {
     visible: {
         opacity: 1,
         y: 0,
-        fontSize: '19px',
+        fontSize: '15px',
         transition: {
             duration: 0.5,
             type: "spring",
@@ -35,18 +35,15 @@ const menuItemVariant = {
 
 const Navbar = ({ fixed }) => {
 
-    const variant = useMemo(()=>{
-       menuItemVariant
-    },[])
     return <AnimatePresence>
         {!fixed && <motion.div animate={{ y: 0 }} initial={{ y: -100 }} exit={{ y: -100 }} className={styles.navbar}>
             <div>
                 <div className={styles.navbarGroup}>
                     <motion.div variants={navbarVariant} initial="hidden" animate="visible" className={styles.menu}>
                         <ul>
-                            <motion.li variants={variant}>Intro</motion.li>
-                            <motion.li variants={variant}>Skills</motion.li>
-                            <motion.li variants={variant}>Projects</motion.li>
+                            <motion.li variants={menuItemVariant}>Intro</motion.li>
+                            <motion.li variants={menuItemVariant}>Skills</motion.li>
+                            <motion.li variants={menuItemVariant}>Projects</motion.li>
                         </ul>
                     </motion.div>
                     <div>

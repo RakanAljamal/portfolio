@@ -26,7 +26,7 @@ export default function ShowMyInfo() {
             }
         </motion.h3>
         <p>
-            Diligent, Creative Software Engineer who's able to works in
+            Diligent, Creative Software Engineer who is able to works in
             a fully agile environment
             Have the desire to keep learning
             anything related to modern

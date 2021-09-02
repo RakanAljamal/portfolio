@@ -80,7 +80,7 @@ const ProjectInfo = ({ showProjectsCardAnimation,title,details,animationColor,it
             <h2>{title}</h2>
             <div className={styles.projectDetails}>{details}</div>
             <ul className={styles.itemSkills}>
-                {items.map(item => ( <li>{item}</li> ))}
+                {items.map(item => ( <li key={item}>{item}</li> ))}
             </ul>
             <div style={{background:animationColor}} onClick={handleHref} className={styles.website}>Website</div>
         </div>}

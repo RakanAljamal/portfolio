@@ -67,13 +67,13 @@ const FixedNavbar = ({fixed}) => {
                     <div className={styles.navbarGroup}>
                         <div className={styles.fixedMenu}>
                             <ul>
-                                <motion.li variants={menuItemVariant}>Intro</motion.li>
-                                <motion.li variants={menuItemVariant}>Skills</motion.li>
-                                <motion.li variants={menuItemVariant}>Projects</motion.li>
+                                <motion.li className={styles.menuItem} variants={menuItemVariant}>Intro</motion.li>
+                                <motion.li className={styles.menuItem} variants={menuItemVariant}>Skills</motion.li>
+                                <motion.li className={styles.menuItem} variants={menuItemVariant}>Projects</motion.li>
                             </ul>
                         </div>
                         <div>
-                            <span className={styles.contact}>Contact Me</span>
+                            <span className={styles.menuItem}>Contact Me</span>
                         </div>
                     </div>
                 </div>

@@ -71,34 +71,35 @@
 .fixedMenu {
   & ul {
     list-style: none;
-    & > li {
-      margin: 0 15px;
-      display: inline-block;
-      @include navFont;
-
-      &:hover{
-        color: #222;
-        cursor: pointer;
-      }
-      &:after {
-        content: '';
-        display: block;
-        margin:2px auto;
-        height: 2px;
-        width: 0;
-        background: transparent;
-        transition: width .5s ease, background-color .5s ease;
-      }
-
-
-      &:hover:after {
-        width: 100%;
-        background: #222;
-      }
-    }
   }
 }
 
+.menuItem {
+  margin: 0 15px;
+  display: inline-block;
+  @include navFont;
+
+  &:hover {
+    color: #222;
+    cursor: pointer;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    margin: 2px auto;
+    height: 2px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+  }
+
+
+  &:hover:after {
+    width: 100%;
+    background: #222;
+  }
+}
 .me {
   font-family: "Bad Script", cursive;;
   font-size: 45px;
