@@ -81,7 +81,7 @@ export const HomePage = ({ initialState }) => {
 
     return (
         <>
-            <Modal open={open} />
+            <Modal open={open} setOpen={setOpen} />
             <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
             <FixedNavbar setOpen={setOpen} fixed={fixedNavbar} />
             <div className={styles.homepageContainer}>

@@ -4,6 +4,99 @@
   height: 100%;
   left: 0;
   top: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 100;
+}
+
+.modalBoxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+}
+
+.modalBox {
+  position: relative;
+  height: 75%;
+  width: 65%;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.modalHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 60px;
+
+  &:nth-child(1) {
+    padding-left: 150px;
+  }
+
+  &:hover {
+    cursor: default;
+  }
+
+  span:first-child {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 2rem;
+    letter-spacing: .24rem;
+  }
+
+  a {
+    font-family: Butler;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 4.5rem;
+    letter-spacing: -.036rem;
+  }
+}
+
+@mixin contactDetail {
+  font-size: 20px;
+  position: relative;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+.contactOptions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.available {
+  @include contactDetail;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: -20%;
+    top: 50%;
+    bottom: 0;
+    right: 0;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background: #95c11f;
+  }
+}
+
+.contactDetail {
+  @include contactDetail;
+}
+
+.modalBody {
+  padding: 40px 60px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
 }
