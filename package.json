@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@n8tb1t/use-scroll-position": "^2.0.3",
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "html-react-parser": "^1.2.8",
+    "joi": "^17.4.2",
     "next": "11.1.0",
     "react-dom": "17.0.2",
     "react-on-screen": "^2.1.1",
@@ -25,6 +28,7 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
     "framer-motion": "^4.1.17",
+    "mustache": "^4.2.0",
     "react": "^17.0.2"
   }
 }

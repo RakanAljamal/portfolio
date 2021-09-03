@@ -34,12 +34,12 @@ const Modal = ({ open, setOpen }) => {
                     <div className={styles.modalHeader}>
                         <div className={styles.contactOptions}>
                             <span>Location</span>
-                            <span className={styles.contactDetail}>Jordan/Amman</span>
+                            <a className={styles.contactDetail}>Jordan/Amman</a>
                         </div>
                         <div className={styles.contactOptions}>
                             <span>PHONE</span>
-                            <a href="tel:+962798000023">+962-798000023</a>
-                            <span className={styles.available}>I'm available </span>
+                            <a href="tel:+962798000023">+962 798000023</a>
+                            <span className={styles.available}>I&#39;m available </span>
                         </div>
                         <div className={styles.contactOptions}>
                             <span>E-MAIL</span>
@@ -50,7 +50,7 @@ const Modal = ({ open, setOpen }) => {
                         <UserForm/>
                     </div>
                     <div className={styles.modalFooter}>
-                        <span onClick={handleClose}>Close</span>
+                        {/*<span onClick={handleClose}>Close</span>*/}
                     </div>
                 </div>
             </div>
