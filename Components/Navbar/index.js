@@ -33,7 +33,7 @@ const menuItemVariant = {
     }
 }
 
-const Navbar = ({ fixed }) => {
+const Navbar = ({ fixed, setOpen }) => {
 
     return <AnimatePresence>
         {!fixed && <motion.div animate={{ y: 0 }} initial={{ y: -100 }} exit={{ y: -100 }} className={styles.navbar}>
@@ -47,7 +47,7 @@ const Navbar = ({ fixed }) => {
                         </ul>
                     </motion.div>
                     <div>
-                        <span className={styles.lightContact}>Contact Me</span>
+                        <span onClick={()=>setOpen(true)} className={styles.lightContact}>Contact Me</span>
                     </div>
                 </div>
             </div>

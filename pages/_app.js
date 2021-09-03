@@ -1,5 +1,5 @@
 import '../styles/globals.scss'
-import ScrollProvider from "../Components/ScrollProvider";
+import ScrollProvider from "../components/ScrollProvider";
 import { AnimatePresence } from "framer-motion";
 
 function MyApp({ Component, pageProps }) {

@@ -10,8 +10,8 @@ import { animationType, ScrollContext } from "../ScrollProvider";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { MyProject, ProjectDetails } from "../ProjectCard";
 import FixedNavbar from "../Navbar/FixedNavbar";
-import {motion} from "framer-motion";
 import { Footer } from "../Footer";
+import Modal from "../Modal";
 
 const sajilniDetails = '\n' +
     '                Manage the whole application infrastructure including\n' +
@@ -24,10 +24,6 @@ const weightDetails = '- Manage a cutting-edge Studio finder application which d
     'for SSO, SSR and optimization'
 
 
-const contactHover = {
-    color : 'red'
-}
-
 export const HomePage = ({ initialState }) => {
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
@@ -35,6 +31,7 @@ export const HomePage = ({ initialState }) => {
     const { showSkillsAnimation,showProjectsCardAnimation, showAnimation } = useContext(ScrollContext);
     const [showMyProject, setShowMyProject] = useState(false);
     const [fixedNavbar,setFixedNavbar] = useState(false);
+    const [open,setOpen] = useState(false);
     useScrollPosition(
         ({ currPos }) => {
             setFixedNavbar(currPos.y <= -1500);
@@ -84,8 +81,9 @@ export const HomePage = ({ initialState }) => {
 
     return (
         <>
-            <Navbar fixed={fixedNavbar}/>
-            <FixedNavbar fixed={fixedNavbar} />
+            <Modal open={open} />
+            <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
+            <FixedNavbar setOpen={setOpen} fixed={fixedNavbar} />
             <div className={styles.homepageContainer}>
                 <ShowMyInfo/>
                 <Screen changeScreen={15000}>
@@ -108,26 +106,24 @@ export const HomePage = ({ initialState }) => {
             <ProjectsDivider fill={'#FCFCFC'}/>
             <div className={styles.projectsContainer}>
                 <MyProject show={showMyProject}/>
-                {<ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[0]}
+                <ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[0]}
                                  src={`${window?.location.origin}/card-1.png`}
                                  animationColor='#000586'
                                  title="Weight Watchers"
                                  href={"https://www.ww.com/us/find-a-workshop"}
                                  details={weightDetails}
                                  items={['NextJS','NodeJS','GraphQL','Express']}
-                />}
-                {<ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[1]}
+                />
+                <ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[1]}
                                  src={`${window?.location.origin}/card-2.png`}
                                  title="Sajilni"
                                  href="https://www.sajilni.com"
                                  animationColor='#98D551'
                                  details={sajilniDetails}
                                  items={['MYSQL','AWS','Spring','JQuery']}
-                />}
+                />
                 <br/>
                 <br/>
-
-
             </div>
             <Footer />
         </>

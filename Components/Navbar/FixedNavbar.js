@@ -55,7 +55,7 @@ const fixedNavbarVariant = {
     }
 }
 
-const FixedNavbar = ({fixed}) => {
+const FixedNavbar = ({fixed, setOpen}) => {
 
   return (
     <div style={{minHeight:100}}>
@@ -73,7 +73,7 @@ const FixedNavbar = ({fixed}) => {
                             </ul>
                         </div>
                         <div>
-                            <span className={styles.menuItem}>Contact Me</span>
+                            <span onClick={()=>setOpen(true)} className={styles.menuItem}>Contact Me</span>
                         </div>
                     </div>
                 </div>

@@ -86,7 +86,7 @@
 .dotSkills {
   position: absolute;
   font-size: 100px;
-  background: #6b6ba7;
+  background: rgba(4,189,228,1);
   border-radius: 50%;
   left: 119px;
   top: 92px;
@@ -98,7 +98,10 @@
 .skills {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 100px;
-  color: #6b6ba7;
+
+  color: rgba(4,189,228,1);
+  z-index: 1000;
+
 }
 
 .skillsLogoContainer {
