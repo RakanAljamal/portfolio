@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './styles.module.scss';
 import { motion } from "framer-motion";
+import { validateEmail } from "../../shared/utils";
 
-const MIN_STEPS = 1;
-const MAX_STEPS = 3;
 
-function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
-
-const StepsCounter = ({ state, message }) => {
+const StepsCounter = ({ MAX_STEPS, state, message }) => {
     const stepWidth = 100 / MAX_STEPS;
     return (
         <>
@@ -39,13 +33,14 @@ const CustomInput = ({ message, setMessage, placeholder, name, state, handleChan
 
     const handleNextStep = (ev) => {
         if (( ev.key === 'Enter' || ev.type === 'click' ) && state[name].trim()) {
-            if (ev.target.name === 'email' && !validateEmail(ev.target.value)) {
+            if (state.step === 2 && !validateEmail(state[name])) {
                 setMessage({
                     message: 'Invalid email',
                     error: true
                 })
                 return;
             }
+
             setMessage({ message: '', error: false })
             nextStep();
         }
@@ -74,7 +69,7 @@ const CustomInput = ({ message, setMessage, placeholder, name, state, handleChan
 
     )
 }
-const CustomTextarea = ({ placeholder, name, state, handleChange, nextStep, prevStep }) => {
+const CustomTextarea = ({ placeholder, name, state, handleChange, nextStep, prevStep, resetContact }) => {
 
     const handleNextStep = (ev) => {
         if (ev.key === 'Enter' && !ev.shiftKey) {
@@ -101,97 +96,58 @@ const CustomTextarea = ({ placeholder, name, state, handleChange, nextStep, prev
     )
 }
 
-const FinishStep = ({setOpen}) => {
-    useEffect(()=>{
-        let closeTimeout = setTimeout(()=>{
-            setOpen(false)
-        },5000)
+const FinishStep = ({ setOpen, resetContact }) => {
+    useEffect(() => {
+        let closeTimeout = setTimeout(() => {
+            setOpen(false);
+            resetContact();
+        }, 5000)
 
         return () => {
             clearTimeout(closeTimeout)
+            resetContact();
         }
-    },[])
+    }, [])
     return ( <div className={styles.finalStep}>
             <span>Your message has been sent.</span>
             <svg className={styles.checkMark} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                 <circle className={styles.checkMarkCircle} cx="26" cy="26" r="25" fill="none"></circle>
                 <path className={styles.checkMarkCheck} fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
             </svg>
-            <span>Thank you ! I'll get back to you quickly.</span>
+            <span>Thank you! I'll get back to you quickly.</span>
         </div>
     )
 }
-const UserForm = ({setOpen}) => {
-    const [state, setState] = useState({
-        step: 1,
-        name: '',
-        email: '',
-        description: ''
-    })
-
-    const [message, setMessage] = useState({
-        message: '',
-        error: false,
-    })
-    const nextStep = () => {
-        if (state.step > MAX_STEPS) {
-            return;
-        }
-        setState((state) => ( { ...state, step: state.step + 1 } ))
-    }
+const UserForm = (props) => {
 
 
-    const prevStep = () => {
-        if (state.step < MIN_STEPS) {
-            return;
-        }
-        setState((state) => ( { ...state, step: state.step - 1 } ))
-    }
-
-    const handleChange = (ev, validate) => {
-        if (ev.target.name === 'email') {
-
-
-        }
-        setState({ ...state, [ev.target.name]: ev.target.value })
-    }
-
-    const initialProps = {
-        state,
-        nextStep,
-        prevStep,
-        handleChange,
-        message,
-        setMessage
-    }
-
-    switch (state.step) {
+    switch (props.state.step) {
         case 1:
             return (
                 <>
-                    <CustomInput {...initialProps} name="name" placeholder="Name"/>
-                    <StepsCounter {...initialProps}/>
+                    <CustomInput {...props} name="name" placeholder="Name"/>
+                    <StepsCounter {...props}/>
                 </>
             );
         case 2:
 
             return (
                 <>
-                    <CustomInput {...initialProps} name="email" placeholder="Email"/>
-                    <StepsCounter {...initialProps}/>
+                    <CustomInput {...props} name="email" placeholder="Email"/>
+                    <StepsCounter {...props}/>
                 </>
             );
         case 3:
 
             return (
                 <>
-                    <CustomTextarea {...initialProps} name="description" placeholder="Description (Optional)"/>
-                    <StepsCounter {...initialProps}/>
+                    <CustomTextarea {...props} name="description" placeholder="Description (Optional)"/>
+                    <StepsCounter {...props}/>
                 </>
             );
         default:
             return (
-                <FinishStep setOpen={setOpen}/>
+                <FinishStep {...props}/>
             )
     }
 }

@@ -18,7 +18,7 @@ const showTextBackground = {
     position: 'absolute',
     width: '100%',
 };
-export const Footer = () => {
+export const Footer = ({setOpen}) => {
     const [showContactBackground,setShowContactBackground] = useState(false);
 
     return (
@@ -29,7 +29,7 @@ export const Footer = () => {
             </svg>
             <div className={styles.contactMeFooter}>
                 Wanna hire me, don&#39;t hesitate to <motion.div className={styles.contactMeCTA}>
-            <span onMouseEnter={() => setShowContactBackground(true)}
+            <span onClick={()=>setOpen(true)} onMouseEnter={() => setShowContactBackground(true)}
                   onMouseLeave={() => setShowContactBackground(false)}
             >contact me</span>
                 <motion.div className={styles.contactMeBackground}

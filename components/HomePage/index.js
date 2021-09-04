@@ -123,7 +123,7 @@ export const HomePage = ({ initialState }) => {
                 <br/>
                 <br/>
             </div>
-            <Footer />
+            <Footer setOpen={setOpen} />
         </>
 
     );

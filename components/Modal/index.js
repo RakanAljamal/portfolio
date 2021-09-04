@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import styles from './styles.module.scss';
 import UserForm from "../UserForm";
+import { useContact } from "../../shared/hooks/useContact";
 
 const Modal = ({ open, setOpen }) => {
+    const contactProps = useContact();
+
     useEffect(() => {
         if (!document?.documentElement) {
             return
@@ -21,6 +24,7 @@ const Modal = ({ open, setOpen }) => {
     const handleClose = (ev,keyClicked) => {
         if (ev && ev.key === 'Escape') {
             setOpen(false);
+            contactProps.resetContact(true);
         }
         if(keyClicked){
             return;
@@ -47,7 +51,7 @@ const Modal = ({ open, setOpen }) => {
                         </div>
                     </div>
                     <div className={styles.modalBody}>
-                        <UserForm setOpen={setOpen}/>
+                        <UserForm  {...contactProps} setOpen={setOpen}/>
                     </div>
                     <div className={styles.modalFooter}>
                     </div>
