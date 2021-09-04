@@ -27,7 +27,6 @@ const gridData = {
 
 export default async function handler(req, res) {
     try {
-        console.log(process.cwd())
         fs.readFile(`${htmlDirectory}/email-template.html`, (error, data) => {
             if (error) {
                 return res.status(500).json({ err })

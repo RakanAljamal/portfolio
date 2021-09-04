@@ -40,7 +40,6 @@ export const HomePage = ({ initialState }) => {
                 showAnimation(animationType.Skills);
             }
             setShowMyProject(currPos.y <= -925  && currPos.y >= -2125);
-            console.log(currPos.y);
 
             if(currPos.y <= -2000) {
                 showAnimation(animationType.Cards,0);
@@ -72,7 +71,6 @@ export const HomePage = ({ initialState }) => {
     }, [])
 
     useEffect(()=>{
-        console.log('Rakan',showProjectsCardAnimation);
     },[showProjectsCardAnimation])
 
     if (loading) {
