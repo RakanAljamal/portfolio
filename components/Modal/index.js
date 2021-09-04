@@ -78,6 +78,8 @@ const Modal = ({ open, setOpen }) => {
                 <motion.div key="modalBox" exit="hidden" variants={modalVariant} initial="hidden" animate="visible"
                             className={styles.modalBoxContainer}>
                     <div className={styles.modalBox}>
+                        <div className={styles.closeButton} onClick={handleClose}>&#x2715;</div>
+
                         <div className={styles.modalHeader}>
                             <motion.div variants={contactInfoVariant} className={styles.contactOptions}>
                                 <span>Location</span>

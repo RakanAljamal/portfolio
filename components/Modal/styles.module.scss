@@ -117,3 +117,19 @@
     fill: #087dff36;
   }
 }
+
+.closeButton {
+  position: absolute;
+  right: 3%;
+  top: 3%;
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 2rem;
+  letter-spacing: 0.24rem;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}
+
