@@ -67,6 +67,21 @@
   right: 0;
   user-select: none;
   transition: all 0.5s ease-in-out;
+  z-index: 2;
+
+
+  span {
+    position: absolute;
+    font-size: 25px;
+    color: #000;
+    margin-bottom: -10px;
+    bottom: 27px;
+    left: 59px;
+    font-weight: 300;
+    line-height: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24rem;
+  }
 
   &:hover {
     cursor: pointer;
@@ -75,6 +90,38 @@
   }
 }
 
+.backwardArrow {
+  @extend .arrow;
+  right: unset;
+  left: 0;
+  bottom: 10%;
+  z-index: 2;
+
+  span {
+    position: absolute;
+    font-size: 25px;
+    color: #000;
+    margin-bottom: -10px;
+    bottom: 27px;
+    left: 59px;
+    font-weight: 300;
+    line-height: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24rem;
+  }
+
+}
+
+.textAreaArrow{
+  @extend .arrow;
+  top: 50%;
+}
+
+.textAreaBackwardArrow {
+  @extend .backwardArrow;
+  bottom: 25%;
+
+}
 .finalStep {
   display: flex;
   flex-direction: column;

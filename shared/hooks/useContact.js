@@ -60,6 +60,7 @@ export const useContact = () => {
         nextStep,
         prevStep,
         handleChange,
+        MIN_STEPS,
         MAX_STEPS,
         resetContact
     }
