@@ -99,7 +99,7 @@ export const HomePage = ({ initialState }) => {
                 </Screen>
             </div>
             <SectionDivider showSkills={showSkillsAnimation}>
-                {showSkillsAnimation && <Skills/>}
+                {/*{showSkillsAnimation && <Skills/>}*/}
             </SectionDivider>
             <ProjectsDivider fill={'#FCFCFC'}/>
             <div className={styles.projectsContainer}>

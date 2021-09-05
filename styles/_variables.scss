@@ -1,0 +1,37 @@
+// SCREEN BREAKPOINTS
+$screen-lg-min: 1330px;
+$screen-mlg-min: 1180px;
+$screen-md-min: 992px;
+$screen-sm-min: 768px;
+$screen-xs-min: 576px;
+$white: #FFF;
+$light-white: #F7F7FF;
+$primary-page: $light-white;
+$screen-border: #414360;
+
+
+@mixin phone {
+  @media (max-width: $screen-xs-min) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $screen-sm-min) {
+    @content;
+  }
+}
+
+
+@mixin large-tablet {
+  @media (max-width: $screen-mlg-min){
+    @content;
+  }
+}
+
+@mixin large-screen {
+  @media (max-width: $screen-lg-min) {
+    @content;
+  }
+}
+

@@ -1,4 +1,4 @@
-@import "styles/variables/colors";
+@import "styles/_variables";
 
 @mixin contactMe {
   color: $light-white;
@@ -6,14 +6,19 @@
   font-weight: 700;
   font-size: 40px;
   margin: 10px 100px;
-  width: 30%;
+  width: 70%;
   border-radius: 50px;
 }
 
 .homepageContainer {
   display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  justify-content: space-between;
   align-items: center;
+  max-width: 1800px;
+  @include large-screen {
+    flex-direction: column;
+  }
 }
 
 .particlesContainer {
@@ -72,6 +77,11 @@
   }
 
   @include contactMe;
+
+  @include large-screen {
+    width: 90%;
+    margin-bottom: 100px;
+  }
 }
 
 .logo {
@@ -81,26 +91,37 @@
   z-index: 1;
   left: -62px;
   bottom: 33px;
+
+  @include tablet {
+    display: none;
+  }
 }
 
 .dotSkills {
   position: absolute;
   font-size: 100px;
-  background: rgba(4,189,228,1);
+  background: rgba(4, 189, 228, 1);
   border-radius: 50%;
   left: 119px;
   top: 92px;
   width: 17px;
   height: 17px;
   z-index: 1;
+  @include tablet {
+    display: none;
+  }
 }
 
 .skills {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 100px;
 
-  color: rgba(4,189,228,1);
+  color: rgba(4, 189, 228, 1);
   z-index: 1000;
+
+  @include tablet {
+    display: none;
+  }
 
 }
 
@@ -110,6 +131,20 @@
   position: absolute;
   left: -500px;
   top: 0px;
+
+  @include large-screen {
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    img {
+      display: inline-block;
+      margin: 0;
+      right: unset;
+      object-fit: scale-down;;
+    }
+  }
 }
 
 .skillsLogo {
@@ -128,6 +163,28 @@
     right: 150px;
   }
 
+  @include large-screen {
+
+    &:nth-child(n) {
+      margin: 0;
+      right: unset;
+      height: 200px;
+      width: 200px;
+    }
+
+    &:nth-child(odd){
+      right: 50%;
+    }
+
+    &:nth-child(even){
+      left: 50%;
+    }
+
+    &:last-child {
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
 
 .projectsContainer {

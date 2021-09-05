@@ -17,8 +17,8 @@ export default function Home({ initialState }) {
                 <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet" />
                 <title>Rakan</title>
             </Head>
-            <Particles
-                params={params}/>
+            {/*<Particles*/}
+            {/*    params={params}/>*/}
             <HomePage initialState={initialState}/>
         </div>
     )

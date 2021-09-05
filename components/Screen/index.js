@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
+import { motion } from "framer-motion";
+import { showLogo } from "../HomePage/animations";
 
 const Screen = ({ children, refresh, changeScreen }) => {
     const [showScreen, setShowScreen] = useState(true);
@@ -21,7 +23,9 @@ const Screen = ({ children, refresh, changeScreen }) => {
                 </div>
 
             </div>
-            <div className={styles.mediumPc}/>
+            <div className={styles.mediumPc}>
+                <img alt="actions" src={`${window?.location.origin}/options.png`}/>
+            </div>
             <div className={styles.mediumIcon}/>
             <div className={styles.underlay}/>
             <div className={styles.underlayBottom}/>
