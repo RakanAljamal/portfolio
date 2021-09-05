@@ -1,0 +1,6 @@
+export const SCREEN_SIZE = {
+    PHONE:576,
+    TABLET:768,
+    LARGE_TABLET:1000,
+    SMALL_LAPTOP: 1300,
+}

@@ -12,6 +12,7 @@ import { MyProject, ProjectDetails } from "../ProjectCard";
 import FixedNavbar from "../Navbar/FixedNavbar";
 import { Footer } from "../Footer";
 import Modal from "../Modal";
+import { useScreen } from "../../shared/hooks/useScreen";
 
 const sajilniDetails = '\n' +
     '                Manage the whole application infrastructure including\n' +
@@ -25,13 +26,15 @@ const weightDetails = '- Manage a cutting-edge Studio finder application which d
 
 
 export const HomePage = ({ initialState }) => {
+    const { isTablet } = useScreen();
+
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [loading, setLoading] = useState(true);
-    const { showSkillsAnimation,showProjectsCardAnimation, showAnimation } = useContext(ScrollContext);
+    const { showSkillsAnimation, showProjectsCardAnimation, showAnimation } = useContext(ScrollContext);
     const [showMyProject, setShowMyProject] = useState(false);
-    const [fixedNavbar,setFixedNavbar] = useState(false);
-    const [open,setOpen] = useState(false);
+    const [fixedNavbar, setFixedNavbar] = useState(false);
+    const [open, setOpen] = useState(false);
     useScrollPosition(
         ({ currPos }) => {
             setFixedNavbar(currPos.y <= -1500);
@@ -39,15 +42,15 @@ export const HomePage = ({ initialState }) => {
             if (currPos.y <= -375) {
                 showAnimation(animationType.Skills);
             }
-            setShowMyProject(currPos.y <= -925  && currPos.y >= -2125);
+            setShowMyProject(currPos.y <= -925 && currPos.y >= -2125);
 
-            if(currPos.y <= -2000) {
-                showAnimation(animationType.Cards,0);
+            if (currPos.y <= -2000) {
+                showAnimation(animationType.Cards, 0);
             }
 
 
-            if(currPos.y <= -2800) {
-                showAnimation(animationType.Cards,1);
+            if (currPos.y <= -2800) {
+                showAnimation(animationType.Cards, 1);
             }
 
         },
@@ -70,8 +73,8 @@ export const HomePage = ({ initialState }) => {
         setLoading(false)
     }, [])
 
-    useEffect(()=>{
-    },[showProjectsCardAnimation])
+    useEffect(() => {
+    }, [showProjectsCardAnimation])
 
     if (loading) {
         return <h1>Loading</h1>
@@ -79,9 +82,9 @@ export const HomePage = ({ initialState }) => {
 
     return (
         <>
-            <Modal open={open} setOpen={setOpen} />
+            <Modal open={open} setOpen={setOpen}/>
             <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
-            <FixedNavbar setOpen={setOpen} fixed={fixedNavbar} />
+            <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/>
             <div className={styles.homepageContainer}>
                 <ShowMyInfo/>
                 <Screen changeScreen={15000}>
@@ -105,25 +108,25 @@ export const HomePage = ({ initialState }) => {
             <div className={styles.projectsContainer}>
                 <MyProject show={showMyProject}/>
                 <ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[0]}
-                                 src={`${window?.location.origin}/card-1.png`}
-                                 animationColor='#000586'
-                                 title="Weight Watchers"
-                                 href={"https://www.ww.com/us/find-a-workshop"}
-                                 details={weightDetails}
-                                 items={['NextJS','NodeJS','GraphQL','Express']}
+                                src={`${window?.location.origin}/card-1.png`}
+                                animationColor='#000586'
+                                title="Weight Watchers"
+                                href={"https://www.ww.com/us/find-a-workshop"}
+                                details={weightDetails}
+                                items={['NextJS', 'NodeJS', 'GraphQL', 'Express']}
                 />
                 <ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[1]}
-                                 src={`${window?.location.origin}/card-2.png`}
-                                 title="Sajilni"
-                                 href="https://www.sajilni.com"
-                                 animationColor='#98D551'
-                                 details={sajilniDetails}
-                                 items={['MYSQL','AWS','Spring','JQuery']}
+                                src={`${window?.location.origin}/card-2.png`}
+                                title="Sajilni"
+                                href="https://www.sajilni.com"
+                                animationColor='#98D551'
+                                details={sajilniDetails}
+                                items={['MYSQL', 'AWS', 'Spring', 'JQuery']}
                 />
                 <br/>
                 <br/>
             </div>
-            <Footer setOpen={setOpen} />
+            <Footer setOpen={setOpen}/>
         </>
 
     );
