@@ -1,0 +1,73 @@
+@import "styles/_variables";
+
+.resumeContainer {
+  position: absolute;
+  top: -850px;
+  left: 45%;
+  transition: all 0.4s ease-in-out;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  @include phone {
+    left: 35%;
+  }
+
+  img {
+    width: 130%;
+    filter: blur(1px);
+    transition: all 0.2s ease-in-out;
+    background: #222;
+    border-radius: 5px;
+
+    &:hover {
+      filter: blur(0);
+      cursor: pointer;
+    }
+
+    @include phone {
+      width: 145%;
+    }
+  }
+
+
+}
+
+.downloadOverlay {
+  position: absolute;
+  height: 100%;
+  width: 130%;
+  top: -0.7px;
+  left: 0;
+  right: 0;
+  transition: background-color 0.4s ease-in-out;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+
+  color: #fefefe;
+  font-size: 64px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  @include phone {
+    width: 145%;
+  }
+}
+
+.resumeText {
+  display: inline-block;
+  position: absolute;
+  font-family: "Bad Script", cursive;
+  font-size: 32px;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  line-height: 2rem;
+  letter-spacing: 0.24rem;
+  margin-bottom: 10px;
+  bottom: 860px;
+  left: 50%;
+  transform: translateX(-50%);
+}

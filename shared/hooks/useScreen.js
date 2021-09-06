@@ -8,7 +8,12 @@ export const useScreen = () => {
         query: `(max-width: ${SCREEN_SIZE.TABLET}px)`
     })
 
+    const isSmallLaptop = useMediaQuery({
+        query: `(max-width: ${SCREEN_SIZE.SMALL_LAPTOP}px)`
+    })
+
     return {
-        isTablet
+        isTablet,
+        isSmallLaptop
     }
 }

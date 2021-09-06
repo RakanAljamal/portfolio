@@ -73,7 +73,7 @@ const FixedNavbar = ({fixed, setOpen}) => {
                             </ul>
                         </div>
                         <div>
-                            <span onClick={()=>setOpen(true)} className={styles.menuItem}>Contact Me</span>
+                            <span onClick={()=>setOpen(true)} className={styles.menuItem}>Contact</span>
                         </div>
                     </div>
                 </div>

@@ -21,4 +21,16 @@
   left: 45%;
   z-index: 2;
   transform: translateY( -50%);
+
+  @include large-screen {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+}
+
+.projectsDivider {
+  @include tablet {
+    height: 200px;
+  }
 }

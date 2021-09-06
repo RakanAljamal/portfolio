@@ -47,7 +47,7 @@ const Navbar = ({ fixed, setOpen }) => {
                         </ul>
                     </motion.div>
                     <div>
-                        <span onClick={()=>setOpen(true)} className={styles.lightContact}>Contact Me</span>
+                        <span onClick={()=>setOpen(true)} className={styles.lightContact}>Contact</span>
                     </div>
                 </div>
             </div>

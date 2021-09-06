@@ -13,6 +13,7 @@ import FixedNavbar from "../Navbar/FixedNavbar";
 import { Footer } from "../Footer";
 import Modal from "../Modal";
 import { useScreen } from "../../shared/hooks/useScreen";
+import Resume from "../Resume";
 
 const sajilniDetails = '\n' +
     '                Manage the whole application infrastructure including\n' +
@@ -102,8 +103,9 @@ export const HomePage = ({ initialState }) => {
                 </Screen>
             </div>
             <SectionDivider showSkills={showSkillsAnimation}>
-                {/*{showSkillsAnimation && <Skills/>}*/}
+                {showSkillsAnimation && <Skills/>}
             </SectionDivider>
+            {isTablet && <Resume />}
             <ProjectsDivider fill={'#FCFCFC'}/>
             <div className={styles.projectsContainer}>
                 <MyProject show={showMyProject}/>
