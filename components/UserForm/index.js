@@ -30,7 +30,7 @@ const UserForm = (props) => {
             return (
                 <>
                     <CustomTextarea {...initialProps} name="description" placeholder="Description (Optional)"/>
-                    <StepsCounter {...initialProps}/>
+                    <StepsCounter {...initialProps} description={true}/>
                 </>
             );
         default:

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import styles from "./styles.module.scss";
 
 
-export const StepsCounter = ({ MAX_STEPS, state, message }) => {
+export const StepsCounter = ({ MAX_STEPS, state, message,description }) => {
     const stepWidth = 100 / MAX_STEPS;
     return (
         <>
@@ -18,7 +18,7 @@ export const StepsCounter = ({ MAX_STEPS, state, message }) => {
                     mass: 0.6
                 }}
                 style={{ backgroundColor: message.error ? '#ff8080' : null }}
-                className={styles.stepsProgress}>
+                className={description ? styles.descriptionStepsProgress:styles.stepsProgress}>
 
 
             </motion.div>

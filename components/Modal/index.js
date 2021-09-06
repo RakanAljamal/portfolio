@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import UserForm from "../UserForm";
 import { useContact } from "../../shared/hooks/useContact";
 import { AnimatePresence, motion } from "framer-motion";
+import { useScreen } from "../../shared/hooks/useScreen";
 
 const modalBoxVariant = {
     hidden: {
@@ -46,7 +47,7 @@ const contactInfoVariant = {
 }
 const Modal = ({ open, setOpen }) => {
     const contactProps = useContact();
-
+    const { isTablet } = useScreen();
     useEffect(() => {
         if (!document?.documentElement) {
             return
@@ -82,16 +83,23 @@ const Modal = ({ open, setOpen }) => {
 
                         <div className={styles.modalHeader}>
                             <motion.div variants={contactInfoVariant} className={styles.contactOptions}>
-                                <span>Location</span>
+                                <span>Location:</span>
                                 <a className={styles.contactDetail}>Jordan/Amman</a>
                             </motion.div>
                             <motion.div variants={contactInfoVariant} className={styles.contactOptions}>
-                                <span>PHONE</span>
-                                <a href="tel:+962798000023">+962 798000023</a>
-                                <span className={styles.available}>I&#39;m available </span>
+                                <span>PHONE:</span>
+                                {isTablet ? <div>
+                                        <a href="tel:+962798000023">+962 798000023</a>
+                                        <span className={styles.available}>I&#39;m available </span>
+                                    </div> :
+                                    <>
+                                        <a href="tel:+962798000023">+962 798000023</a>
+                                        <span className={styles.available}>I&#39;m available </span>
+                                    </>
+                                }
                             </motion.div>
                             <motion.div variants={contactInfoVariant} className={styles.contactOptions}>
-                                <span>E-MAIL</span>
+                                <span>E-MAIL:</span>
                                 <a href="mailto:rakanaljamal@gmail.com">rakanaljamal@gmail.com</a>
                             </motion.div>
                         </div>

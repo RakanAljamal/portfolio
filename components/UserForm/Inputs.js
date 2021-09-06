@@ -30,7 +30,6 @@ export const CustomInput = ({ message, setMessage, placeholder, name, state, han
             <span className={styles.inputPlaceholder}>{placeholder}</span>
             <input
                 autoComplete="off"
-                autoFocus
                 onKeyDown={handleNextStep}
                 className={styles.nameInput}
                 id={name}
@@ -41,7 +40,7 @@ export const CustomInput = ({ message, setMessage, placeholder, name, state, han
 
             { hasNextStep && <label htmlFor={name} onClick={handleNextStep} className={styles.arrow}>&#8594;</label> }
             { hasPrevStep && <label htmlFor={name} onClick={handlePrevStep} className={styles.backwardArrow}>&#8592;
-                <span>{Object.keys(state)[state.step - 1]}</span></label> }
+                <span className={styles.arrowPlaceholder}>{Object.keys(state)[state.step - 1]}</span></label> }
 
             {message.error && <div style={{ position: 'absolute', top: '25%', fontSize: 15 }}>
                 - {message.message}
@@ -73,7 +72,6 @@ export const CustomTextarea = ({ placeholder, name, state, handleChange, nextSte
         <div className={styles.customInputContainer}>
             <span className={styles.inputPlaceholder}>{placeholder}</span>
             <textarea
-                autoFocus
                 id={name}
                 onKeyDown={handleNextStep}
                 className={styles.descriptionInput}

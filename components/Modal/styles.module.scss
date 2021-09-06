@@ -1,3 +1,5 @@
+@import "styles/variables";
+
 .modal {
   position: fixed;
   width: 100vw;
@@ -23,6 +25,15 @@
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
+
+  @include large-screen {
+    height: 85%;
+    width: 75%;
+  }
+  @include phone {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .modalHeader {
@@ -30,8 +41,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 40px 60px;
-
+  padding: 40px 10px;
+  margin-top: 25px;
   &:nth-child(1) {
     padding-left: 150px;
   }
@@ -39,6 +50,7 @@
   &:hover {
     cursor: default;
   }
+
 
   span:first-child {
     font-size: 1.2rem;
@@ -53,6 +65,23 @@
     font-weight: 700;
     line-height: 4.5rem;
     letter-spacing: -.036rem;
+
+    @include large-screen {
+      font-size: 24px;
+      font-weight: 600;
+
+      &:last-child {
+        font-size: 20px;
+      }
+    }
+  }
+
+  @include large-screen {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+
   }
 }
 
@@ -66,11 +95,23 @@
 }
 
 .contactOptions {
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
   align-items: center;
+
+  @include large-screen {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-top: 45px;
+    }
+  }
 }
 
 .available {
@@ -87,7 +128,21 @@
     width: 8px;
     border-radius: 50%;
     background: #95c11f;
+
+    @include large-screen {
+      left: -15%;
+      top: 8px;
+    }
   }
+
+
+  @include large-screen {
+    position: absolute;
+    top: 186px;
+    right: 46px;
+    font-size: 18px;
+  }
+
 }
 
 .contactDetail {
@@ -102,6 +157,10 @@
   align-content: center;
   width: 100%;
   flex-direction: column;
+
+  @include large-screen {
+    padding: 40px 20px;
+  }
 }
 
 .modalFooter {
@@ -127,6 +186,7 @@
   line-height: 2rem;
   letter-spacing: 0.24rem;
   transition: all 0.5s ease-in-out;
+
   &:hover {
     cursor: pointer;
     transform: scale(1.1);
