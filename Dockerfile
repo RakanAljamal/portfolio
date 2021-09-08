@@ -17,7 +17,7 @@ RUN npm i
 
 COPY . /usr/src/app
 
-RUN npm build
+RUN npm run build
 
 EXPOSE 3000
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
