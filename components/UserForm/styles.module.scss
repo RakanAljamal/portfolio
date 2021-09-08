@@ -37,7 +37,7 @@
 
 
   @include phone {
-    font-size: 18px ;
+    font-size: 18px;
     min-height: unset;
   }
 }
@@ -69,6 +69,7 @@
   height: 5px;
   border-radius: 10px;
 }
+
 .descriptionStepsProgress {
   position: absolute;
   top: 61%;
@@ -150,7 +151,7 @@
 
 }
 
-.textAreaArrow{
+.textAreaArrow {
   @extend .arrow;
   top: 50%;
 }
@@ -160,6 +161,7 @@
   bottom: 25%;
 
 }
+
 .finalStep {
   display: flex;
   flex-direction: column;
@@ -180,21 +182,22 @@
   height: 100px;
   border-radius: 50%;
   display: block;
-  stroke-width:5;
+  stroke-width: 5;
   stroke: #91e484;
   stroke-miterlimit: 10;
   margin: 2rem;
 }
 
 .checkMarkCircle {
-  animation: m .6s cubic-bezier(.65,0,.45,1) forwards;
+  animation: m .6s cubic-bezier(.65, 0, .45, 1) forwards;
 }
-.checkMarkCheck{
-  animation: m .3s cubic-bezier(.65,0,.45,1) .8s forwards;
+
+.checkMarkCheck {
+  animation: m .3s cubic-bezier(.65, 0, .45, 1) .8s forwards;
 }
 
 .arrowPlaceholder {
-    @include phone {
-      font-size: 32px;
-    }
+  @include phone {
+    font-size: 32px;
+  }
 }

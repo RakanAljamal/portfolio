@@ -33,7 +33,6 @@ export const HomePage = ({ initialState }) => {
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [loading, setLoading] = useState(true);
     const { showSkillsAnimation, showProjectsCardAnimation, showAnimation } = useContext(ScrollContext);
-    const [showMyProject, setShowMyProject] = useState(false);
     const [fixedNavbar, setFixedNavbar] = useState(false);
     const [open, setOpen] = useState(false);
     useScrollPosition(
@@ -43,7 +42,6 @@ export const HomePage = ({ initialState }) => {
             if (currPos.y <= -375) {
                 showAnimation(animationType.Skills);
             }
-            setShowMyProject(currPos.y <= -925 && currPos.y >= -2125);
 
             if (currPos.y <= -2000) {
                 showAnimation(animationType.Cards, 0);
@@ -58,7 +56,7 @@ export const HomePage = ({ initialState }) => {
         [showSkillsAnimation],
     );
     useEffect(() => {
-        if (!forceRender) {
+        if ( !forceRender) {
             setForceRender(true);
             setRandomState(prevRandom => {
                 let newRandom = initialState[Math.floor(Math.random() * initialState.length)];
@@ -83,52 +81,52 @@ export const HomePage = ({ initialState }) => {
 
     return (
         <>
-            <Modal open={open} setOpen={setOpen}/>
-            <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
-            <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/>
-            <div className={styles.homepageContainer}>
+            <Modal open={ open } setOpen={ setOpen }/>
+            <Navbar setOpen={ setOpen } fixed={ fixedNavbar }/>
+            <FixedNavbar setOpen={ setOpen } fixed={ fixedNavbar }/>
+            <div className={ styles.homepageContainer }>
                 <ShowMyInfo/>
-                <Screen changeScreen={15000}>
-                    {forceRender && <InfoCounter
-                        initialState={randomState}
-                        render={() => setForceRender(false)}
-                        speed={25}
-                        deleteSpeed={25}
-                        dashTimer={400}
-                        timeToShow={1000}
-                        timeToEnd={2000}
-                        indicator={"_"}
+                <Screen changeScreen={ 15000 }>
+                    { forceRender && <InfoCounter
+                        initialState={ randomState }
+                        render={ () => setForceRender(false) }
+                        speed={ 25 }
+                        deleteSpeed={ 25 }
+                        dashTimer={ 400 }
+                        timeToShow={ 1000 }
+                        timeToEnd={ 2000 }
+                        indicator={ "_" }
                     />
                     }
                 </Screen>
             </div>
-            <SectionDivider showSkills={showSkillsAnimation}>
-                {showSkillsAnimation && <Skills/>}
+            <SectionDivider showSkills={ showSkillsAnimation }>
+                { showSkillsAnimation && <Skills/> }
             </SectionDivider>
-            {isTablet && <Resume />}
-            <ProjectsDivider fill={'#FCFCFC'}/>
-            <div className={styles.projectsContainer}>
-                <MyProject show={showMyProject}/>
-                <ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[0]}
-                                src={`${window?.location.origin}/card-1.png`}
+            { isTablet && <Resume/> }
+            <ProjectsDivider fill={ '#FFF' }/>
+            <div className={ styles.projectsContainer }>
+                <MyProject/>
+                <ProjectDetails showProjectsCardAnimation={ showProjectsCardAnimation[0] }
+                                src={ `${ window?.location.origin }/card-1.png` }
                                 animationColor='#000586'
                                 title="Weight Watchers"
-                                href={"https://www.ww.com/us/find-a-workshop"}
-                                details={weightDetails}
-                                items={['NextJS', 'NodeJS', 'GraphQL', 'Express']}
+                                href={ "https://www.ww.com/us/find-a-workshop" }
+                                details={ weightDetails }
+                                items={ ['NextJS', 'NodeJS', 'GraphQL', 'Express'] }
                 />
-                <ProjectDetails showProjectsCardAnimation={showProjectsCardAnimation[1]}
-                                src={`${window?.location.origin}/card-2.png`}
+                <ProjectDetails showProjectsCardAnimation={ showProjectsCardAnimation[1] }
+                                src={ `${ window?.location.origin }/card-2.png` }
                                 title="Sajilni"
                                 href="https://www.sajilni.com"
                                 animationColor='#98D551'
-                                details={sajilniDetails}
-                                items={['MYSQL', 'AWS', 'Spring', 'JQuery']}
+                                details={ sajilniDetails }
+                                items={ ['MYSQL', 'AWS', 'Spring', 'JQuery'] }
                 />
                 <br/>
                 <br/>
             </div>
-            <Footer setOpen={setOpen}/>
+            <Footer setOpen={ setOpen }/>
         </>
 
     );

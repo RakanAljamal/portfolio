@@ -6,7 +6,16 @@ let flashTimer;
 let reverseTimer;
 
 
-export const InfoCounter = ({ render, initialState, speed, timeToShow, dashTimer, indicator, timeToEnd, deleteSpeed }) => {
+export const InfoCounter = ({
+                                render,
+                                initialState,
+                                speed,
+                                timeToShow,
+                                dashTimer,
+                                indicator,
+                                timeToEnd,
+                                deleteSpeed
+                            }) => {
 
 
     const [running, setIsRunning] = useState(true);
@@ -22,7 +31,7 @@ export const InfoCounter = ({ render, initialState, speed, timeToShow, dashTimer
                 }, speed);
             }
 
-            if (!running) {
+            if ( !running) {
                 clearInterval(timer);
             }
 
@@ -34,20 +43,20 @@ export const InfoCounter = ({ render, initialState, speed, timeToShow, dashTimer
     }, [running])
 
     useEffect(() => {
-        if (!running) {
+        if ( !running) {
             clearInterval(timer);
 
             setTimeout(() => {
                 reverseTimer = setInterval(() => {
                     setName(prevState => {
-                        if (!prevState || prevState.length === 0) {
+                        if ( !prevState || prevState.length === 0) {
                             clearInterval(reverseTimer);
                             render();
                         }
 
                         return prevState.slice(0, -1)
                     });
-                }, deleteSpeed)
+                }, 5)
 
             }, timeToEnd)
         }
@@ -82,8 +91,9 @@ export const InfoCounter = ({ render, initialState, speed, timeToShow, dashTimer
     }, [count])
 
     return (
-        <div className={styles.whoAmI}>
-            <p> <span className={styles.rootUser}>Rakan@WEBSITE $ </span>{name} <span className={flashUnderscore ? styles.hidden : styles.visible}>{indicator}</span></p>
+        <div className={ styles.whoAmI }>
+            <p><span className={ styles.rootUser }>Rakan@WEBSITE $ </span>{ name } <span
+                className={ flashUnderscore ? styles.hidden : styles.visible }>{ indicator }</span></p>
         </div>
     )
 }

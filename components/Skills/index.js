@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useCycle } from "framer-motion";
 import styles from "../HomePage/styles.module.scss";
+import { childLogo, expandDot, loadingCircleTransition, showLogo, skills, snakeLogos } from "../HomePage/animations";
 import {
-    childLogo,
-    expandDot,
-    loadingCircleTransition,
-    rotateLogo,
-    showLogo,
-    skills,
-    snakeLogos
-} from "../HomePage/animations";
-import {
-    FaDocker, FaReact, SiJavascript, SiMysql, SiAmazonaws, DiNodejs,
-    SiTypescript,SiNextDotJs,SiGraphql,AiFillGithub,FaSass,DiLinux
+    AiFillGithub,
+    DiNodejs,
+    FaDocker,
+    FaReact,
+    FaSass,
+    SiAmazonaws,
+    SiGraphql,
+    SiJavascript,
+    SiMysql,
+    SiNextDotJs,
+    SiTypescript
 } from "react-icons/all";
 
 import { useScreen } from "../../shared/hooks/useScreen";
@@ -42,7 +43,7 @@ const Skills = () => {
     }, [toggleVariant])
     return isSmallLaptop ? (
         <div>
-            <ul className={styles.skillsIconsContainer}>
+            <ul className={ styles.skillsIconsContainer }>
                 <li key='JSIcon'><SiJavascript/></li>
                 <li key='SiTypescript'><SiTypescript/></li>
                 <li key='ReactIcon'><FaReact/></li>
@@ -60,26 +61,28 @@ const Skills = () => {
 
     ) : (
         <div>
-            <motion.div className={styles.dotSkills} variants={expandDotAnimation ? expandDot : skills} initial="hidden"
+            <motion.div className={ styles.dotSkills } variants={ expandDotAnimation ? expandDot : skills }
+                        initial="hidden"
                         animate="visible"/>
-            <motion.img variants={showLogo} initial="hidden" animate="visible" className={styles.logo} alt="logo"
-                        src={`${window?.location.origin}/react.png`}/>
-            {showAllSkills && <motion.div
-                className={styles.skillsLogoContainer}
-                variants={snakeLogos}
+            <motion.img variants={ showLogo } initial="hidden" animate="visible" className={ styles.logo } alt="logo"
+                        src={ `${ window?.location.origin }/react.png` }/>
+            { showAllSkills && <motion.div
+                className={ styles.skillsLogoContainer }
+                variants={ snakeLogos }
                 initial="start"
                 animate="end"
             >
-                {logos.map((logo, idx) => {
+                { logos.map((logo, idx) => {
                     return (
-                        <motion.img key={`logo-${idx}`} variants={childLogo} transition={loadingCircleTransition}
-                                    className={styles.skillsLogo} alt="logo"
-                                    src={`${window?.location.origin}/${logo}.png`}/>
+                        <motion.img key={ `logo-${ idx }` } variants={ childLogo }
+                                    transition={ loadingCircleTransition }
+                                    className={ styles.skillsLogo } alt="logo"
+                                    src={ `${ window?.location.origin }/${ logo }.png` }/>
                     )
-                })}
+                }) }
             </motion.div>
             }
-            <motion.h1 className={styles.skills} variants={skills} initial="hidden" animate="visible">Skılls
+            <motion.h1 className={ styles.skills } variants={ skills } initial="hidden" animate="visible">Skılls
             </motion.h1>
         </div>
     );

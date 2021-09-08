@@ -1,7 +1,7 @@
 @import "styles/_variables";
 
-$card-info-height : 900;
-$card-height : 720;
+$card-info-height: 900;
+$card-height: 720;
 
 .cardContainer {
   background: #fff;
@@ -133,7 +133,8 @@ $card-height : 720;
 .myProject {
   font-family: "Space Grotesk", sans-serif;
   font-size: 50px;
-
+  height: 200px;
+  position: relative;
 }
 
 .itemSkills {
@@ -147,7 +148,7 @@ $card-height : 720;
     background: #fff;
     color: #222;
 
-    &:nth-child(2n){
+    &:nth-child(2n) {
       background: #fafafa;
     }
 
@@ -156,6 +157,7 @@ $card-height : 720;
     }
   }
 }
+
 .website {
   position: absolute;
   left: 50%;
@@ -163,11 +165,29 @@ $card-height : 720;
   top: 80%;
   width: 100%;
   background: #6b6ba7;
-  color:#fff;
+  color: #fff;
   transition: all 0.3s ease-in-out;
 
   &:hover {
     cursor: pointer;
     opacity: 0.8;
+  }
+}
+
+.projectChars {
+  position: absolute;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+  width: 100%;
+
+  span {
+    color: #222;
+  }
+
+  @include tablet {
+    span {
+      font-size: 28px;
+    }
   }
 }

@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 // Word wrapper
 const Wrapper = props => {
     // We'll do this to prevent wrapping of words using CSS
-    return <span className={styles.myProject}>{props.children}</span>;
+    return <span className={ styles.myProject }>{ props.children }</span>;
 };
 
 // Map API "type" vaules to JSX tag names
@@ -52,32 +52,32 @@ const AnimatedCharacters = props => {
 
     return (
         <Tag>
-            {words.map((word, index) => {
+            { words.map((word, index) => {
                 return (
                     // Wrap each word in the Wrapper component
-                    <Wrapper key={index}>
-                        {words[index].flat().map((element, index) => {
+                    <Wrapper key={ index }>
+                        { words[index].flat().map((element, index) => {
                             return (
                                 <span
-                                    style={{
+                                    style={ {
                                         overflow: "hidden",
                                         display: "inline-block"
-                                    }}
-                                    key={index}
+                                    } }
+                                    key={ index }
                                 >
                   <motion.span
-                      style={{ display: "inline-block" }}
-                      variants={item}
+                      style={ { display: "inline-block" } }
+                      variants={ item }
                   >
-                    {element}
+                    { element }
                   </motion.span>
                 </span>
                             );
-                        })}
+                        }) }
                     </Wrapper>
                 );
-            })}
-            {/* {} */}
+            }) }
+            {/* {} */ }
         </Tag>
     );
 };

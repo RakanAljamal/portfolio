@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useScreen } from "../../shared/hooks/useScreen";
@@ -37,8 +37,8 @@ const menuItemVariant = {
 const Navbar = ({ fixed, setOpen }) => {
     const { isTablet } = useScreen();
 
-    if(isTablet){
-        return  <SidebarMenu />
+    if (isTablet) {
+        return <SidebarMenu/>
     }
     return <AnimatePresence>
         { !fixed &&

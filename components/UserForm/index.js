@@ -13,29 +13,29 @@ const UserForm = (props) => {
         case 1:
             return (
                 <>
-                    <CustomInput {...initialProps} name="name" placeholder="Name"/>
-                    <StepsCounter {...initialProps}/>
+                    <CustomInput { ...initialProps } name="name" placeholder="Name"/>
+                    <StepsCounter { ...initialProps }/>
                 </>
             );
         case 2:
 
             return (
                 <>
-                    <CustomInput {...initialProps} name="email" placeholder="Email"/>
-                    <StepsCounter {...initialProps}/>
+                    <CustomInput { ...initialProps } name="email" placeholder="Email"/>
+                    <StepsCounter { ...initialProps }/>
                 </>
             );
         case 3:
 
             return (
                 <>
-                    <CustomTextarea {...initialProps} name="description" placeholder="Description (Optional)"/>
-                    <StepsCounter {...initialProps} description={true}/>
+                    <CustomTextarea { ...initialProps } name="description" placeholder="Description (Optional)"/>
+                    <StepsCounter { ...initialProps } description={ true }/>
                 </>
             );
         default:
             return (
-                <FinishStep {...initialProps}/>
+                <FinishStep { ...initialProps }/>
             )
     }
 }

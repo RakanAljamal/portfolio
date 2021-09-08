@@ -34,58 +34,58 @@ export const wave = {
 export const skills = {
     hidden: {
         opacity: 0,
-        y:'-200px'
+        y: '-200px'
     },
     visible: {
-        opacity:1,
-        y:-50,
-        transition:{
-            type:"spring",
-            delay:1,
-            stiffness:120
+        opacity: 1,
+        y: -50,
+        transition: {
+            type: "spring",
+            delay: 1,
+            stiffness: 120
         }
     }
 }
 
 export const expandDot = {
     hidden: {
-        opacity:1,
-        y:-50,
-        scale:1,
+        opacity: 1,
+        y: -50,
+        scale: 1,
     },
     visible: {
-        y:-13,
-        opacity:1,
-        scale:18,
-        background:'#222',
-        transition:{
-            type:"spring",
-            delay:1,
-            stiffness:120
+        y: -13,
+        opacity: 1,
+        scale: 18,
+        background: '#222',
+        transition: {
+            type: "spring",
+            delay: 1,
+            stiffness: 120
         }
     }
 }
 
 export const showLogo = {
-    hidden:{
-        opacity:0,
+    hidden: {
+        opacity: 0,
     },
-    visible:{
-        opacity:1,
-        transition:{
-            type:'spring',
-            delay:3
+    visible: {
+        opacity: 1,
+        transition: {
+            type: 'spring',
+            delay: 3
         }
     }
 }
 
 
 export const rotateLogo = {
-    visible:{
-        opacity:1,
-        scale:1,
+    visible: {
+        opacity: 1,
+        scale: 1,
         rotate: 360,
-        transition:{
+        transition: {
             loop: Infinity,
             ease: "linear",
             duration: 10
@@ -109,10 +109,10 @@ export const snakeLogos = {
 export const childLogo = {
     start: {
         x: 50,
-        opacity:0,
+        opacity: 0,
     },
     end: {
-        opacity:1,
+        opacity: 1,
         x: 0,
     }
 };

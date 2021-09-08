@@ -3,27 +3,27 @@ import { motion } from "framer-motion";
 import styles from "./styles.module.scss";
 
 
-export const StepsCounter = ({ MAX_STEPS, state, message,description }) => {
+export const StepsCounter = ({ MAX_STEPS, state, message, description }) => {
     const stepWidth = 100 / MAX_STEPS;
     return (
         <>
             <motion.div
-                animate={{
-                    width: `${stepWidth * ( state.step - 1 )}%`
-                }}
-                transition={{
+                animate={ {
+                    width: `${ stepWidth * (state.step - 1) }%`
+                } }
+                transition={ {
                     type: "spring",
                     duration: 1,
                     stiffness: 100,
                     mass: 0.6
-                }}
-                style={{ backgroundColor: message.error ? '#ff8080' : null }}
-                className={description ? styles.descriptionStepsProgress:styles.stepsProgress}>
+                } }
+                style={ { backgroundColor: message.error ? '#ff8080' : null } }
+                className={ description ? styles.descriptionStepsProgress : styles.stepsProgress }>
 
 
             </motion.div>
-            <div className={styles.stepsCounter}>
-                {`${state.step} / ${MAX_STEPS}`}
+            <div className={ styles.stepsCounter }>
+                { `${ state.step } / ${ MAX_STEPS }` }
             </div>
         </>
     )

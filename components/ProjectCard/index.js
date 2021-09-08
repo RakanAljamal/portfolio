@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { motion } from "framer-motion";
-import { cardInfo, cardCollapse, cardOpenDuration, card, cardInfoCollapse, cardContainer } from './animations';
+import { card, cardCollapse, cardContainer, cardInfo, cardInfoCollapse, cardOpenDuration } from './animations';
 import AnimatedCharacters from "./AnimatedCharacters";
+import { useInScreen } from "../../shared/hooks/useInScreen";
 
-export const MyProject = ({ show }) => {
-    const [replay, setReplay] = useState(true);
-    // Placeholder text data, as if from API
+export const MyProject = () => {
+    const { ref, show } = useInScreen();
+
     const placeholderText = [
         { type: "heading1", text: "Projects & Experience" },
     ];
 
     const container = {
         visible: {
-            width: '100%',
             transition: {
                 duration: 3,
                 staggerChildren: 0.025
@@ -21,37 +21,38 @@ export const MyProject = ({ show }) => {
         }
     };
 
-    if (!show) {
-        return <div style={{ minHeight: 100 }}/>;
-    }
 
     return (
-        <motion.div
-            style={{ textAlign: 'center' }}
-            initial="hidden"
-            animate="visible"
-            variants={container}
-        >
-            <div className="container">
-                {placeholderText.map((item, index) => {
-                    return <AnimatedCharacters {...item} key={index}/>;
-                })}
-            </div>
+        <div className={ styles.myProject } ref={ ref }>
 
-        </motion.div>
+            { show && <motion.div
+                style={ { textAlign: 'center' } }
+                initial="hidden"
+                animate="visible"
+                className={ styles.projectChars }
+                variants={ container }
+            >
+                <div>
+                    { placeholderText.map((item, index) => {
+                        return <AnimatedCharacters { ...item } key={ index }/>;
+                    }) }
+                </div>
+
+            </motion.div> }
+        </div>
     );
 }
 export const ProjectDetails = (props) => {
     return (
-        <div className={styles.projectDetailsContainer}>
-            <ProjectInfo {...props}/>
-            <ProjectCard  {...props} />
+        <div className={ styles.projectDetailsContainer }>
+            <ProjectInfo { ...props }/>
+            <ProjectCard  { ...props } />
         </div>
     )
 };
 
 
-const ProjectInfo = ({ showProjectsCardAnimation,title,details,animationColor,items, href }) => {
+const ProjectInfo = ({ showProjectsCardAnimation, title, details, animationColor, items, href }) => {
     const [cardInfoVariant, setCardInfoVariant] = useState(cardInfo);
     const [showCardDetails, setShowCardDetails] = useState(false);
     useEffect(() => {
@@ -64,26 +65,27 @@ const ProjectInfo = ({ showProjectsCardAnimation,title,details,animationColor,it
 
     }, [showProjectsCardAnimation])
 
-    if (!showProjectsCardAnimation) {
-        return <div className={styles.cardInfoContainer}/>
+    if ( !showProjectsCardAnimation) {
+        return <div className={ styles.cardInfoContainer }/>
     }
 
     function handleHref() {
         window.location.href = href;
     }
 
-    return <motion.div variants={showCardDetails ? cardContainer : null} initial="start" animate="end"
-                       className={styles.cardInfoContainer}>
-        <motion.div variants={cardInfoVariant} initial="start" animate="end" className={styles.cardInfoOverlay}/>
+    return <motion.div variants={ showCardDetails ? cardContainer : null } initial="start" animate="end"
+                       className={ styles.cardInfoContainer }>
+        <motion.div variants={ cardInfoVariant } initial="start" animate="end" className={ styles.cardInfoOverlay }/>
 
-        {showCardDetails && <div className={styles.cardInfoDetails}>
-            <h2>{title}</h2>
-            <div className={styles.projectDetails}>{details}</div>
-            <ul className={styles.itemSkills}>
-                {items.map(item => ( <li key={item}>{item}</li> ))}
+        { showCardDetails && <div className={ styles.cardInfoDetails }>
+            <h2>{ title }</h2>
+            <div className={ styles.projectDetails }>{ details }</div>
+            <ul className={ styles.itemSkills }>
+                { items.map(item => (<li key={ item }>{ item }</li>)) }
             </ul>
-            <div style={{background:animationColor}} onClick={handleHref} className={styles.website}>Website</div>
-        </div>}
+            <div style={ { background: animationColor } } onClick={ handleHref } className={ styles.website }>Website
+            </div>
+        </div> }
     </motion.div>
 }
 
@@ -109,16 +111,16 @@ const ProjectCard = ({ src, showProjectsCardAnimation, animationColor }) => {
         }
     }, [showProjectsCardAnimation])
     return (
-        <div className={styles.projectContainer}>
-            <div style={{ background: showImage && '#000' }} className={styles.animationContainer}>
-                {showImage && <motion.img variants={card} className={styles.cardImage}
-                                          src={src}
-                                          alt="image"/>}
+        <div className={ styles.projectContainer }>
+            <div style={ { background: showImage && '#000' } } className={ styles.animationContainer }>
+                { showImage && <motion.img variants={ card } className={ styles.cardImage }
+                                           src={ src }
+                                           alt="image"/> }
 
-                {showProjectsCardAnimation &&
-                <motion.div variants={variant} initial="start" animate="end" className={styles.cardContainer}>
+                { showProjectsCardAnimation &&
+                <motion.div variants={ variant } initial="start" animate="end" className={ styles.cardContainer }>
 
-                </motion.div>}
+                </motion.div> }
             </div>
 
         </div>

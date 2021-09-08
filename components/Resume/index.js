@@ -8,15 +8,15 @@ const Resume = () => {
     return (
         <>
 
-            <div style={{position:'relative'}}>
-                <span className={styles.resumeText}>Resume</span>
+            <div style={ { position: 'relative' } }>
+                <span className={ styles.resumeText }>Resume</span>
             </div>
-            <div onMouseEnter={() => setOverlayHover(true)}
-                 onMouseLeave={() => setOverlayHover(false)}
-                 style={{ position: 'relative' }}>
-                <div className={styles.resumeContainer}>
+            <div onMouseEnter={ () => setOverlayHover(true) }
+                 onMouseLeave={ () => setOverlayHover(false) }
+                 style={ { position: 'relative' } }>
+                <div className={ styles.resumeContainer }>
                     <LocalImage name='cv.png' alt='resume'/>
-                    {overlayHover && <div className={styles.downloadOverlay}>
+                    { overlayHover && <div className={ styles.downloadOverlay }>
                         <ImEye/>
                     </div>
                     }

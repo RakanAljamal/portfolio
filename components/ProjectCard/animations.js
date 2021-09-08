@@ -7,7 +7,7 @@ export const closeCardColor = '#fff';
 export let card = {
     start: {
         width: 0,
-        backgroundColor:closeCardColor
+        backgroundColor: closeCardColor
     },
     end: {
         width: cardWidth,
@@ -71,10 +71,10 @@ export const cardInfoCollapse = {
 export const cardContainer = {
     start: {
         boxShadow: '',
-        scale:0.9,
+        scale: 0.9,
     },
     end: {
-        scale:1,
+        scale: 1,
         boxShadow: 'rgba(0, 0, 0, 0.56) 0px 22px 70px 4px',
         transition: {
             animationDirection: '',

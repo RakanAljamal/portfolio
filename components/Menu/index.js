@@ -59,7 +59,7 @@ const SidebarMenu = ({ dark }) => {
     const [openMenu, setOpenMenu] = useState(false);
 
     useEffect(() => {
-        if (!document?.documentElement) {
+        if ( !document?.documentElement) {
             return
         }
         document.documentElement.style.overflow = openMenu ? 'hidden' : 'auto'
@@ -71,21 +71,21 @@ const SidebarMenu = ({ dark }) => {
     const handleMenuChange = (state) => {
         setOpenMenu(state.isOpen);
     }
-        return <div className={ styles.mobileNavbar }>
-            <AiOutlineMenu style={{ color: dark ? '#222' : null}} onClick={ () => setOpenMenu(state => !state) }/>
-            <Menu
-                isOpen={ openMenu }
-                onStateChange={ handleMenuChange }
-                customBurgerIcon={ false }
-                styles={ menuStyles }
-                width={ '300px' }>
-                <a className={ styles.lightContact } style={ { fontSize: 26 } }>Intro</a>
-                <a className={ styles.lightContact } style={ { fontSize: 26 } }>Skills</a>
-                <a className={ styles.lightContact } style={ { fontSize: 26 } }>Projects</a>
-            </Menu>
+    return <div className={ styles.mobileNavbar }>
+        <AiOutlineMenu style={ { color: dark ? '#222' : null } } onClick={ () => setOpenMenu(state => !state) }/>
+        <Menu
+            isOpen={ openMenu }
+            onStateChange={ handleMenuChange }
+            customBurgerIcon={ false }
+            styles={ menuStyles }
+            width={ '300px' }>
+            <a className={ styles.lightContact } style={ { fontSize: 26 } }>Intro</a>
+            <a className={ styles.lightContact } style={ { fontSize: 26 } }>Skills</a>
+            <a className={ styles.lightContact } style={ { fontSize: 26 } }>Projects</a>
+        </Menu>
 
 
-        </div>
+    </div>
 
 }
 export default SidebarMenu;

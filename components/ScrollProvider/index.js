@@ -1,19 +1,19 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const ScrollContext = createContext({
     showSkillsAnimation: false,
     showProjectsCardAnimation: false,
-    showAnimation: (type,index=0) => {
+    showAnimation: (type, index = 0) => {
     }
 })
 
 export const animationType = {
-    Skills:'skills',
-    Cards:'cards'
+    Skills: 'skills',
+    Cards: 'cards'
 }
 export const ScrollProvider = ({ children }) => {
-    const [showSkillsAnimation,setShowSkillsAnimation] = useState(false);
-    const [showProjectsCardAnimation,setShowProjectsCardAnimation] = useState([false,false]);
+    const [showSkillsAnimation, setShowSkillsAnimation] = useState(false);
+    const [showProjectsCardAnimation, setShowProjectsCardAnimation] = useState([false, false]);
 
     const showAnimation = (type, index = 0) => {
         switch (type) {
@@ -30,8 +30,8 @@ export const ScrollProvider = ({ children }) => {
 
 
     return (
-        <ScrollContext.Provider value={{ showSkillsAnimation, showProjectsCardAnimation, showAnimation }}>
-            {children}
+        <ScrollContext.Provider value={ { showSkillsAnimation, showProjectsCardAnimation, showAnimation } }>
+            { children }
         </ScrollContext.Provider>
     );
 };

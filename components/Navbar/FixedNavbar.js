@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
-import { AiOutlineMenu } from "react-icons/all";
 import { useScreen } from "../../shared/hooks/useScreen";
 import SidebarMenu from "../Menu";
 
@@ -64,7 +63,7 @@ const FixedNavbar = ({ fixed, setOpen }) => {
         return <AnimatePresence>
             { fixed && <motion.div exit="exit" initial="hidden" animate="visible" variants={ fixedNavbarVariant }
                                    className={ styles.fixedMobileNavbar }>
-                <SidebarMenu dark={true}/>
+                <SidebarMenu dark={ true }/>
             </motion.div>
             }        </AnimatePresence>
     }

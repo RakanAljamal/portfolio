@@ -173,11 +173,11 @@
       width: 200px;
     }
 
-    &:nth-child(odd){
+    &:nth-child(odd) {
       right: 50%;
     }
 
-    &:nth-child(even){
+    &:nth-child(even) {
       left: 50%;
     }
 
@@ -210,7 +210,7 @@
     transition: all 0.5s ease-in-out;
 
     &:hover {
-      color: rgba(4,189,228,1);
+      color: rgba(4, 189, 228, 1);
     }
   }
 }
