@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from 'framer-motion';
+import { useInScreen } from "../hooks/useInScreen";
 
 const svgVariant = {
     initial: {
@@ -24,15 +25,23 @@ const TopHome = ({ showSkills }) => <motion.svg
     />
 </motion.svg>
 
-const BottomHome = ({ showSkills }) => {
+const BottomHome = ({ showSkills, setFixedNavbar }) => {
+    const { ref, show } = useInScreen();
 
-    return <motion.svg variants={showSkills ? svgVariant : null} initial={{ fill: "#F7F7FF" }} animate="end"
-                       className={styles.homepage}
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewBox="0 0 1440 320">
-        <path fillOpacity="1"
-              d="M0,192L60,165.3C120,139,240,85,360,85.3C480,85,600,139,720,144C840,149,960,107,1080,101.3C1200,96,1320,128,1380,144L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"/>
-    </motion.svg>
+    useEffect(()=>{
+        if(show){
+            setFixedNavbar(false);
+        }
+    },[show])
+    return <div ref={ ref }>
+        <motion.svg variants={ showSkills ? svgVariant : null } initial={ { fill: "#F7F7FF" } } animate="end"
+                    className={ styles.homepage }
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1440 320">
+            <path fillOpacity="1"
+                  d="M0,192L60,165.3C120,139,240,85,360,85.3C480,85,600,139,720,144C840,149,960,107,1080,101.3C1200,96,1320,128,1380,144L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"/>
+        </motion.svg>
+    </div>
 }
 
 
@@ -44,10 +53,23 @@ export const ProjectsDivider = ({ fill }) => {
         </svg>
     )
 }
-export const SectionDivider = ({ showSkills, children }) => ( <div>
-    <TopHome showSkills={showSkills}/>
-    <div style={{position:"relative"}}>
-        <div className={styles.presentation}>{children}</div>
-    </div>
-    <BottomHome showSkills={showSkills}/>
-</div> )
+export const SectionDivider = ({ showSkills, children , setFixedNavbar,setSkillsAnimation }) => {
+
+    const { ref, show } = useInScreen();
+
+    useEffect(() => {
+        if (show) {
+            setSkillsAnimation(true);
+        }
+    },[show])
+
+    return (
+        <div>
+            <TopHome showSkills={ showSkills }/>
+            <div ref={ref} style={ { position: "relative" } }>
+                <div className={ styles.presentation }>{ children }</div>
+            </div>
+            <BottomHome setFixedNavbar={ setFixedNavbar } showSkills={ showSkills }/>
+        </div>
+    )
+}

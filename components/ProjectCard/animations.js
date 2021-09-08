@@ -75,7 +75,7 @@ export const cardContainer = {
     },
     end: {
         scale: 1,
-        boxShadow: 'rgba(0, 0, 0, 0.56) 0px 22px 70px 4px',
+        boxShadow: 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
         transition: {
             animationDirection: '',
             duration: 2,

@@ -5,7 +5,7 @@ import { card, cardCollapse, cardContainer, cardInfo, cardInfoCollapse, cardOpen
 import AnimatedCharacters from "./AnimatedCharacters";
 import { useInScreen } from "../../shared/hooks/useInScreen";
 
-export const MyProject = () => {
+export const MyProject = ({setFixedNavbar}) => {
     const { ref, show } = useInScreen();
 
     const placeholderText = [
@@ -20,6 +20,12 @@ export const MyProject = () => {
             }
         }
     };
+
+    useEffect(()=>{
+        if(show){
+            setFixedNavbar(true);
+        }
+    },[show])
 
 
     return (
@@ -52,32 +58,39 @@ export const ProjectDetails = (props) => {
 };
 
 
-const ProjectInfo = ({ showProjectsCardAnimation, title, details, animationColor, items, href }) => {
-    const [cardInfoVariant, setCardInfoVariant] = useState(cardInfo);
+const ProjectInfo = ({ title, details, animationColor, items, href }) => {
+    const { ref, show } = useInScreen();
+    const [cardInfoVariant, setCardInfoVariant] = useState(animationColor ? {
+        ...cardInfo,
+        start: {
+            ...cardInfo.start,
+            backgroundColor: animationColor
+        }
+    }: cardInfo);
     const [showCardDetails, setShowCardDetails] = useState(false);
     useEffect(() => {
-        if (showProjectsCardAnimation) {
+        if (show) {
             setTimeout(() => {
                 setCardInfoVariant(cardInfoCollapse)
                 setShowCardDetails(true);
             }, 1500 * cardOpenDuration)
         }
 
-    }, [showProjectsCardAnimation])
+    }, [show])
 
-    if ( !showProjectsCardAnimation) {
-        return <div className={ styles.cardInfoContainer }/>
-    }
+
 
     function handleHref() {
         window.location.href = href;
     }
 
-    return <motion.div variants={ showCardDetails ? cardContainer : null } initial="start" animate="end"
+    return <motion.div ref={ ref } variants={ showCardDetails ? cardContainer : null } initial="start" animate="end"
                        className={ styles.cardInfoContainer }>
-        <motion.div variants={ cardInfoVariant } initial="start" animate="end" className={ styles.cardInfoOverlay }/>
 
-        { showCardDetails && <div className={ styles.cardInfoDetails }>
+        { show && <motion.div variants={ cardInfoVariant } initial="start" animate="end"
+                      className={ styles.cardInfoOverlay }/> }
+
+        { showCardDetails && <div ref={ ref } className={ styles.cardInfoDetails }>
             <h2>{ title }</h2>
             <div className={ styles.projectDetails }>{ details }</div>
             <ul className={ styles.itemSkills }>
@@ -89,7 +102,7 @@ const ProjectInfo = ({ showProjectsCardAnimation, title, details, animationColor
     </motion.div>
 }
 
-const ProjectCard = ({ src, showProjectsCardAnimation, animationColor }) => {
+const ProjectCard = ({ src, animationColor }) => {
     let animateCard = card;
     if (animationColor) {
         animateCard = {
@@ -100,24 +113,25 @@ const ProjectCard = ({ src, showProjectsCardAnimation, animationColor }) => {
             }
         }
     }
+    const { ref, show } = useInScreen();
     const [variant, setVariant] = useState(animateCard);
     const [showImage, setShowImage] = useState(false);
     useEffect(() => {
-        if (showProjectsCardAnimation) {
+        if (show) {
             setTimeout(() => {
                 setVariant(cardCollapse)
                 setShowImage(true);
             }, 1000 * cardOpenDuration)
         }
-    }, [showProjectsCardAnimation])
+    }, [ref, show])
     return (
         <div className={ styles.projectContainer }>
-            <div style={ { background: showImage && '#000' } } className={ styles.animationContainer }>
+            <div style={ { background: showImage && '#000' } } ref={ ref } className={ styles.animationContainer }>
                 { showImage && <motion.img variants={ card } className={ styles.cardImage }
                                            src={ src }
                                            alt="image"/> }
 
-                { showProjectsCardAnimation &&
+                { show &&
                 <motion.div variants={ variant } initial="start" animate="end" className={ styles.cardContainer }>
 
                 </motion.div> }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { ProjectsDivider, SectionDivider } from "../../shared/svg";
 import { InfoCounter } from "../InfoCounter";
@@ -6,8 +6,6 @@ import Screen from "../Screen";
 import Navbar from "../Navbar";
 import Skills from "../Skills";
 import ShowMyInfo from "../ShowMyInfo";
-import { animationType, ScrollContext } from "../ScrollProvider";
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { MyProject, ProjectDetails } from "../ProjectCard";
 import FixedNavbar from "../Navbar/FixedNavbar";
 import { Footer } from "../Footer";
@@ -32,29 +30,11 @@ export const HomePage = ({ initialState }) => {
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [loading, setLoading] = useState(true);
-    const { showSkillsAnimation, showProjectsCardAnimation, showAnimation } = useContext(ScrollContext);
     const [fixedNavbar, setFixedNavbar] = useState(false);
     const [open, setOpen] = useState(false);
-    useScrollPosition(
-        ({ currPos }) => {
-            setFixedNavbar(currPos.y <= -1500);
-
-            if (currPos.y <= -375) {
-                showAnimation(animationType.Skills);
-            }
-
-            if (currPos.y <= -2000) {
-                showAnimation(animationType.Cards, 0);
-            }
+    const [skillsAnimation, setSkillsAnimation] = useState(false);
 
 
-            if (currPos.y <= -2800) {
-                showAnimation(animationType.Cards, 1);
-            }
-
-        },
-        [showSkillsAnimation],
-    );
     useEffect(() => {
         if ( !forceRender) {
             setForceRender(true);
@@ -66,14 +46,9 @@ export const HomePage = ({ initialState }) => {
                 return newRandom;
             });
         }
+        setLoading(false)
     }, [forceRender])
 
-    useEffect(() => {
-        setLoading(false)
-    }, [])
-
-    useEffect(() => {
-    }, [showProjectsCardAnimation])
 
     if (loading) {
         return <h1>Loading</h1>
@@ -100,28 +75,30 @@ export const HomePage = ({ initialState }) => {
                     }
                 </Screen>
             </div>
-            <SectionDivider showSkills={ showSkillsAnimation }>
-                { showSkillsAnimation && <Skills/> }
+            <SectionDivider setSkillsAnimation={ setSkillsAnimation } setFixedNavbar={ setFixedNavbar }
+                            showSkills={ skillsAnimation }
+                            >
+                { skillsAnimation && <Skills/> }
             </SectionDivider>
             { isTablet && <Resume/> }
             <ProjectsDivider fill={ '#FFF' }/>
             <div className={ styles.projectsContainer }>
-                <MyProject/>
-                <ProjectDetails showProjectsCardAnimation={ showProjectsCardAnimation[0] }
-                                src={ `${ window?.location.origin }/card-1.png` }
-                                animationColor='#000586'
-                                title="Weight Watchers"
-                                href={ "https://www.ww.com/us/find-a-workshop" }
-                                details={ weightDetails }
-                                items={ ['NextJS', 'NodeJS', 'GraphQL', 'Express'] }
+                <MyProject setFixedNavbar={ setFixedNavbar }/>
+                <ProjectDetails
+                    src={ `${ window?.location.origin }/card-1.png` }
+                    animationColor='#000586'
+                    title="Weight Watchers"
+                    href={ "https://www.ww.com/us/find-a-workshop" }
+                    details={ weightDetails }
+                    items={ ['NextJS', 'NodeJS', 'GraphQL', 'Express'] }
                 />
-                <ProjectDetails showProjectsCardAnimation={ showProjectsCardAnimation[1] }
-                                src={ `${ window?.location.origin }/card-2.png` }
-                                title="Sajilni"
-                                href="https://www.sajilni.com"
-                                animationColor='#98D551'
-                                details={ sajilniDetails }
-                                items={ ['MYSQL', 'AWS', 'Spring', 'JQuery'] }
+                <ProjectDetails
+                    src={ `${ window?.location.origin }/card-2.png` }
+                    title="Sajilni"
+                    href="https://www.sajilni.com"
+                    animationColor='#98D551'
+                    details={ sajilniDetails }
+                    items={ ['MYSQL', 'AWS', 'Spring', 'JQuery'] }
                 />
                 <br/>
                 <br/>
