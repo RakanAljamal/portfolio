@@ -1,6 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useScreen } from "../../shared/hooks/useScreen";
+import SidebarMenu from "../Menu";
 
 const navbarVariant = {
     hidden: {
@@ -32,22 +34,26 @@ const menuItemVariant = {
         }
     }
 }
-
 const Navbar = ({ fixed, setOpen }) => {
+    const { isTablet } = useScreen();
 
+    if(isTablet){
+        return  <SidebarMenu />
+    }
     return <AnimatePresence>
-        {!fixed && <motion.div animate={{ y: 0 }} initial={{ y: -100 }} exit={{ y: -100 }} className={styles.navbar}>
+        { !fixed &&
+        <motion.div animate={ { y: 0 } } initial={ { y: -100 } } exit={ { y: -100 } } className={ styles.navbar }>
             <div>
-                <div className={styles.navbarGroup}>
-                    <motion.div variants={navbarVariant} initial="hidden" animate="visible" className={styles.menu}>
+                <div className={ styles.navbarGroup }>
+                    <motion.div variants={ navbarVariant } initial="hidden" animate="visible" className={ styles.menu }>
                         <ul>
-                            <motion.li variants={menuItemVariant}>Intro</motion.li>
-                            <motion.li variants={menuItemVariant}>Skills</motion.li>
-                            <motion.li variants={menuItemVariant}>Projects</motion.li>
+                            <motion.li variants={ menuItemVariant }>Intro</motion.li>
+                            <motion.li variants={ menuItemVariant }>Skills</motion.li>
+                            <motion.li variants={ menuItemVariant }>Projects</motion.li>
                         </ul>
                     </motion.div>
                     <div>
-                        <span onClick={()=>setOpen(true)} className={styles.lightContact}>Contact</span>
+                        <span onClick={ () => setOpen(true) } className={ styles.lightContact }>Contact</span>
                     </div>
                 </div>
             </div>

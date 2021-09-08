@@ -1,4 +1,5 @@
 @import "styles/_variables";
+
 @mixin navFont {
   font-family: 'Archivo Black', sans-serif;
   font-size: 15px;
@@ -30,6 +31,7 @@
     background: #222;
   }
 }
+
 .navbar {
   color: #fff;
   position: fixed;
@@ -62,23 +64,24 @@
 }
 
 
-
 .menu {
   & ul {
     list-style: none;
+
     & > li {
       margin: 0 15px;
       display: inline-block;
-      color: darken($light-white,3);
+      color: darken($light-white, 3);
       @include navFont;
 
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
+
       &:after {
         content: '';
         display: block;
-        margin:2px auto;
+        margin: 2px auto;
         height: 2px;
         width: 0;
         background: transparent;
@@ -103,6 +106,7 @@
 .menuItem {
   @include menuItem;
 }
+
 .me {
   font-family: "Bad Script", cursive;;
   font-size: 45px;
@@ -123,10 +127,32 @@
   &:hover {
     color: #fff;
   }
-  &:after{
+
+  &:after {
     background: #fff;
   }
-  &:hover:after{
+
+  &:hover:after {
     background: #fff;
   }
+}
+
+.mobileNavbar {
+  @extend .navbar;
+  font-size: 38px;
+
+  svg {
+    margin: 5px 0 0 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.fixedMobileNavbar {
+  @extend .fixedNavbar;
+  @extend .mobileNavbar;
+  color: #222;
+
+
 }

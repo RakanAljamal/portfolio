@@ -79,8 +79,9 @@
   @include contactMe;
 
   @include large-screen {
-    width: 90%;
+    width: 95%;
     margin-bottom: 100px;
+    margin-top: 35px;
   }
 }
 
