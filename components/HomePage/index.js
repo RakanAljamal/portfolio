@@ -16,7 +16,7 @@ import Resume from "../Resume";
 const sajilniDetails = '\n' +
     '                Manage the whole application infrastructure including\n' +
     '                the front-end, back-end,\n' +
-    '                and Cloud Infrastructure.\n' +
+    '                and Cloud Infrastructure (AWS).\n' +
     '            '
 
 const weightDetails = '- Manage a cutting-edge Studio finder application which deals\n' +
