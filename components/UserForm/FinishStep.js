@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const pathVariants = {
     hidden: {
@@ -17,12 +18,17 @@ const pathVariants = {
     }
 };
 
-export const FinishStep = ({ setOpen, resetContact }) => {
+export const FinishStep = ({ state, setOpen, resetContact }) => {
     useEffect(() => {
         let closeTimeout = setTimeout(() => {
             setOpen(false);
             resetContact();
         }, 5000)
+
+        axios.post('/api/send',{
+            ...state
+        }).catch(err=>console.error(err))
+
 
         return () => {
             clearTimeout(closeTimeout)

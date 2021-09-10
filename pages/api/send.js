@@ -26,18 +26,17 @@ const gridData = {
 
 
 export default async function handler(req, res) {
+    if (req.method !== 'POST') {
+        return res.status(400).json({ error: 'Bad request' });
+    }
+
     try {
         fs.readFile(`${htmlDirectory}/email-template.html`, (error, data) => {
             if (error) {
-                return res.status(500).json({ err })
+                return res.status(500).json({ error })
             }
-            const view = {
-                name: 'Rakan Aljamal',
-                email: 'rakanaljamal@gmail.com',
-                description: "This is a valid description"
-            }
-
-            const validation = templateValidation.validate(view);
+            const { name, email, description } = req.body;
+            const validation = templateValidation.validate({ name, email, description });
 
             if (validation.error) {
                 return res.status(422).json({
@@ -45,7 +44,7 @@ export default async function handler(req, res) {
                     error: validation.error,
                 });
             }
-            const output = mustache.render(data.toString(), view);
+            const output = mustache.render(data.toString(), { name, email, description });
 
             axios.post('https://api.sendgrid.com/v3/mail/send',
                 {
@@ -57,9 +56,9 @@ export default async function handler(req, res) {
                 }
                 , {
                     headers
-                }).then(_=>{
+                }).then(_ => {
                 return res.status(200).json({
-                    send:'Succesfully'
+                    send: 'Succesfully'
                 })
             }).catch(err => {
                 return res.status(403).json({ err })
@@ -68,6 +67,6 @@ export default async function handler(req, res) {
 
     } catch (err) {
         console.log(err);
-        return  res.status(403).json({ err })
+        return res.status(403).json({ err })
     }
 }
