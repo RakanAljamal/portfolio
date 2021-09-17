@@ -9,8 +9,8 @@
   height: 150px;
   border: none;
   outline: none;
-  border-bottom: 1px solid #222;
-  background: #FEFEFE;
+  border-bottom: 1px solid #22222229;
+  background: transparent;
   margin-bottom: 100px;
   font-family: Butler;
   font-size: 60px;
@@ -19,6 +19,7 @@
   letter-spacing: 1px;
   padding-top: 1rem;
   margin-top: 40px;
+  z-index: 2;
 
 
   @include large-screen {

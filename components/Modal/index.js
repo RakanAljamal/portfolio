@@ -4,6 +4,7 @@ import UserForm from "../UserForm";
 import { useContact } from "../../shared/hooks/useContact";
 import { AnimatePresence, motion } from "framer-motion";
 import { useScreen } from "../../shared/hooks/useScreen";
+import cx from 'classnames';
 
 const modalBoxVariant = {
     hidden: {
@@ -90,18 +91,18 @@ const Modal = ({ open, setOpen }) => {
                             <motion.div variants={ contactInfoVariant } className={ styles.contactOptions }>
                                 <span>PHONE:</span>
                                 { isTablet ? <div>
-                                        <a href="tel:+962798000023">+962 798000023</a>
+                                        <a className={styles.clickableLink} href="tel:+962798000023">+962 798000023</a>
                                         <span className={ styles.available }>I&#39;m available </span>
                                     </div> :
                                     <>
-                                        <a href="tel:+962798000023">+962 798000023</a>
+                                        <a className={styles.clickableLink} href="tel:+962798000023">+962 798000023</a>
                                         <span className={ styles.available }>I&#39;m available </span>
                                     </>
                                 }
                             </motion.div>
                             <motion.div variants={ contactInfoVariant } className={ styles.contactOptions }>
                                 <span>E-MAIL:</span>
-                                <a href="mailto:rakanaljamal@gmail.com">rakanaljamal@gmail.com</a>
+                                <a className={styles.clickableLink} href="mailto:rakanaljamal@gmail.com">rakanaljamal@gmail.com</a>
                             </motion.div>
                         </div>
                         <div className={ styles.modalBody }>

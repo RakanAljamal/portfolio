@@ -7,6 +7,7 @@
     margin-top: -10px;
     margin-bottom: 200px;
   }
+  height: 800px;
 
   @include large-screen {
     height: 1000px;
@@ -18,15 +19,11 @@
 
 .presentation {
   position: absolute;
-  left: 45%;
   z-index: 2;
-  transform: translateY( -50%);
-
-  @include large-screen {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-  }
+  max-width: 960px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 .projectsDivider {

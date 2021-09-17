@@ -70,7 +70,6 @@ export const CustomTextarea = ({
                                    handleChange,
                                    nextStep,
                                    prevStep,
-                                   resetContact,
                                    MIN_STEPS,
                                    MAX_STEPS
                                }) => {
@@ -78,13 +77,7 @@ export const CustomTextarea = ({
     const hasNextStep = state.step <= MAX_STEPS;
 
     const handleNextStep = (ev) => {
-        if (ev.type === 'click' || (ev.key === 'Enter' && !ev.shiftKey)) {
-            ev.preventDefault();
-            nextStep();
-        } else if (ev.key === 'Enter' && !ev.shiftKey) {
-            ev.preventDefault();
-            return false;
-        }
+         nextStep();
     }
 
     const handlePrevStep = () => {
@@ -95,8 +88,8 @@ export const CustomTextarea = ({
         <div className={ styles.customInputContainer }>
             <span className={ styles.inputPlaceholder }>{ placeholder }</span>
             <textarea
+                autoFocus
                 id={ name }
-                onKeyDown={ handleNextStep }
                 className={ styles.descriptionInput }
                 name={ name }
                 value={ state[name] }

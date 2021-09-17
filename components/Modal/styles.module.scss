@@ -64,7 +64,7 @@
     font-family: Butler;
     font-size: 27px;
     font-weight: 700;
-    line-height: 4.5rem;
+    line-height: 3rem;
     letter-spacing: -.036rem;
 
     @include large-screen {
@@ -84,6 +84,10 @@
     padding: 40px 20px;
 
   }
+}
+
+.clickableLink {
+  border-bottom: 3px solid #cbe3ff;
 }
 
 @mixin contactDetail {
@@ -139,10 +143,15 @@
 
   @include large-screen {
     position: absolute;
-    top: 186px;
+    top: 170px;
     right: 46px;
     font-size: 18px;
   }
+
+  @include tablet {
+    top: 158px;
+  }
+
 
 }
 

@@ -32,7 +32,6 @@ export const HomePage = ({ initialState }) => {
     const [loading, setLoading] = useState(true);
     const [fixedNavbar, setFixedNavbar] = useState(false);
     const [open, setOpen] = useState(false);
-    const [skillsAnimation, setSkillsAnimation] = useState(false);
 
 
     useEffect(() => {
@@ -75,10 +74,8 @@ export const HomePage = ({ initialState }) => {
                     }
                 </Screen>
             </div>
-            <SectionDivider setSkillsAnimation={ setSkillsAnimation } setFixedNavbar={ setFixedNavbar }
-                            showSkills={ skillsAnimation }
-                            >
-                { skillsAnimation && <Skills/> }
+            <SectionDivider setFixedNavbar={ setFixedNavbar }>
+                { <Skills/> }
             </SectionDivider>
             { isTablet && <Resume/> }
             <ProjectsDivider fill={ '#FFF' }/>
