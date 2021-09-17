@@ -25,7 +25,6 @@ const weightDetails = '- Manage a cutting-edge Studio finder application which d
 
 
 export const HomePage = ({ initialState }) => {
-    const { isTablet } = useScreen();
 
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
@@ -77,7 +76,7 @@ export const HomePage = ({ initialState }) => {
             <SectionDivider setFixedNavbar={ setFixedNavbar }>
                 { <Skills/> }
             </SectionDivider>
-            { isTablet && <Resume/> }
+            { <Resume/> }
             <ProjectsDivider fill={ '#FFF' }/>
             <div className={ styles.projectsContainer }>
                 <MyProject setFixedNavbar={ setFixedNavbar }/>
