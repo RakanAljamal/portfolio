@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useScreen } from "../../shared/hooks/useScreen";
 import SidebarMenu from "../Menu";
+import {scrollToElement} from "../../shared/utils";
 
 const navbarVariant = {
     hidden: {
@@ -47,9 +48,9 @@ const Navbar = ({ fixed, setOpen }) => {
                 <div className={ styles.navbarGroup }>
                     <motion.div variants={ navbarVariant } initial="hidden" animate="visible" className={ styles.menu }>
                         <ul>
-                            <motion.li variants={ menuItemVariant }>Intro</motion.li>
-                            <motion.li variants={ menuItemVariant }>Skills</motion.li>
-                            <motion.li variants={ menuItemVariant }>Projects</motion.li>
+                            <motion.li variants={ menuItemVariant } onClick={()=>scrollToElement(document.getElementById('home'))}      >Intro</motion.li>
+                            <motion.li variants={ menuItemVariant } onClick={()=>scrollToElement(document.getElementById('skills'),400)}>Skills</motion.li>
+                            <motion.li variants={ menuItemVariant } onClick={()=>scrollToElement(document.getElementById('projects'))}  >Projects</motion.li>
                         </ul>
                     </motion.div>
                     <div>

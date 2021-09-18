@@ -56,7 +56,7 @@ export const SectionDivider = ({ children , setFixedNavbar }) => {
     return (
         <div>
             <TopHome/>
-            <div style={ { position: "relative" } }>
+            <div id="skills" style={ { position: "relative" } }>
                 <div className={ styles.presentation }>{ children }</div>
             </div>
             <BottomHome setFixedNavbar={ setFixedNavbar }/>

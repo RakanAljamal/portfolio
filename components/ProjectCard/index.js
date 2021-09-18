@@ -29,7 +29,7 @@ export const MyProject = ({setFixedNavbar}) => {
 
 
     return (
-        <div className={ styles.myProject } ref={ ref }>
+        <div id="projects" className={ styles.myProject } ref={ ref }>
 
             { show && <motion.div
                 style={ { textAlign: 'center' } }

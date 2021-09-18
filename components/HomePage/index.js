@@ -10,7 +10,6 @@ import { MyProject, ProjectDetails } from "../ProjectCard";
 import FixedNavbar from "../Navbar/FixedNavbar";
 import { Footer } from "../Footer";
 import Modal from "../Modal";
-import { useScreen } from "../../shared/hooks/useScreen";
 import Resume from "../Resume";
 
 const sajilniDetails = '\n' +
@@ -57,7 +56,7 @@ export const HomePage = ({ initialState }) => {
             <Modal open={ open } setOpen={ setOpen }/>
             <Navbar setOpen={ setOpen } fixed={ fixedNavbar }/>
             <FixedNavbar setOpen={ setOpen } fixed={ fixedNavbar }/>
-            <div className={ styles.homepageContainer }>
+            <div className={ styles.homepageContainer } id="home">
                 <ShowMyInfo/>
                 <Screen changeScreen={ 15000 }>
                     { forceRender && <InfoCounter

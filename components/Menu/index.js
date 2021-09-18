@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from "../Navbar/styles.module.scss";
 import { AiOutlineMenu } from "react-icons/all";
 import { slide as Menu } from 'react-burger-menu'
+import { scrollToElement } from "../../shared/utils";
+import { motion } from "framer-motion";
 
 const menuStyles = {
     bmBurgerButton: {
@@ -44,7 +46,7 @@ const menuStyles = {
         padding: 0,
         fontSize: 42,
         position: 'relative',
-        overflow:'hidden'
+        overflow: 'hidden'
     },
     bmItem: {
         display: 'inline',
@@ -61,7 +63,7 @@ const SidebarMenu = ({ dark, setOpen }) => {
     const [openMenu, setOpenMenu] = useState(false);
 
     useEffect(() => {
-        if ( !document?.documentElement) {
+        if (!document?.documentElement) {
             return
         }
         document.documentElement.style.overflow = openMenu ? 'hidden' : 'auto'
@@ -73,20 +75,24 @@ const SidebarMenu = ({ dark, setOpen }) => {
     const handleMenuChange = (state) => {
         setOpenMenu(state.isOpen);
     }
-    return <div className={ styles.mobileNavbar }>
-        <AiOutlineMenu style={ { color: dark ? '#222' : null } } onClick={ () => setOpenMenu(state => !state) }/>
+    const handleScroll = (elementId, offsetRoot) => {
+        setOpenMenu(false);
+        scrollToElement(document.getElementById(elementId),offsetRoot)
+    }
+    return <div className={styles.mobileNavbar}>
+        <AiOutlineMenu style={{ color: dark ? '#222' : null }} onClick={() => setOpenMenu(state => !state)}/>
         <Menu
-            isOpen={ openMenu }
-            onStateChange={ handleMenuChange }
-            customBurgerIcon={ false }
-            styles={ menuStyles }
-            width={ '300px' }>
-            <a className={ styles.lightContact } style={ { fontSize: 26 } }>Intro</a>
-            <a className={ styles.lightContact } style={ { fontSize: 26 } }>Skills</a>
-            <a className={ styles.lightContact } style={ { fontSize: 26 } }>Projects</a>
-            <a className={ styles.lightContact }
-               style={ { fontSize: 26,position: 'absolute',bottom: '25%', width:'100%' }}
-               onClick={()=> {
+            isOpen={openMenu}
+            onStateChange={handleMenuChange}
+            customBurgerIcon={false}
+            styles={menuStyles}
+            width={'300px'}>
+            <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('home')}>Intro</a>
+            <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('skills',400)}>Skills</a>
+            <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('projects')}>Projects</a>
+            <a className={styles.lightContact}
+               style={{ fontSize: 26, position: 'absolute', bottom: '25%', width: '100%' }}
+               onClick={() => {
                    setOpen(true)
                    setOpenMenu(false)
                }}>Contact</a>
