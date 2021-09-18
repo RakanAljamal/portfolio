@@ -42,4 +42,5 @@ package-lock.json
 yarn.lock
 .idea/
 
+*.sh
 .env
