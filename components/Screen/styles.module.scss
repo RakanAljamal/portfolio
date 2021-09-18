@@ -162,7 +162,71 @@
   background: #222;
   @include animation(turnOnScreen);
   @include screenSize;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.codeScreenCTA {
+  min-height: 40%;
+  color: #fff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+}
+.absDiv{
+  position: relative;
+}
+.box {
+  position: relative;
+  height: 100px;
+  background: #222;
+  width: 200px;
+  margin: 2vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  h3 {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #FFF;
+  transform: skew(2deg, 2deg);
+  z-index: -1;
+}
+
+.box:nth-child(n+1)::before {
+  background: linear-gradient(315deg, #FF0057, #E64A19);
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
 }
 
 .screenContainer {

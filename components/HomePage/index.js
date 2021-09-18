@@ -13,7 +13,6 @@ import Modal from "../Modal";
 import Resume from "../Resume";
 import cardOne from '../../public/card-1.png'
 import cardTwo from '../../public/card-2.png'
-import { card } from "../ProjectCard/animations";
 
 
 const sajilniDetails = '\n' +
@@ -31,7 +30,6 @@ export const HomePage = ({ initialState }) => {
 
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
-    const [loading, setLoading] = useState(true);
     const [fixedNavbar, setFixedNavbar] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -47,7 +45,6 @@ export const HomePage = ({ initialState }) => {
                 return newRandom;
             });
         }
-        setLoading(false)
     }, [forceRender])
 
 
@@ -59,7 +56,7 @@ export const HomePage = ({ initialState }) => {
             <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/>
             <div className={styles.homepageContainer} id="home">
                 <ShowMyInfo/>
-                <Screen changeScreen={15000}>
+                <Screen>
                     {forceRender && <InfoCounter
                         initialState={randomState}
                         render={() => setForceRender(false)}
