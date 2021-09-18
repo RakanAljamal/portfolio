@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { validateEmail } from "../../shared/utils";
 import styles from "./styles.module.scss";
 
@@ -16,6 +16,9 @@ export const CustomInput = ({
                             }) => {
     const hasPrevStep = state.step > MIN_STEPS;
     const hasNextStep = state.step < MAX_STEPS;
+
+    const inputRef = useRef();
+
 
     const handleNextStep = (ev) => {
         if ((ev.key === 'Enter' || ev.type === 'click') && state[name].trim()) {
@@ -36,10 +39,14 @@ export const CustomInput = ({
         prevStep();
     }
 
+    useEffect(()=>{
+            inputRef.current?.focus();
+    },[])
     return (
         <div className={ styles.customInputContainer }>
             <span className={ styles.inputPlaceholder }>{ placeholder }</span>
             <input
+                ref={inputRef}
                 autoComplete="off"
                 onKeyDown={ handleNextStep }
                 className={ styles.nameInput }

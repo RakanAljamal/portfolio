@@ -38,7 +38,7 @@ const Navbar = ({ fixed, setOpen }) => {
     const { isTablet } = useScreen();
 
     if (isTablet) {
-        return <SidebarMenu/>
+        return <SidebarMenu setOpen={setOpen}/>
     }
     return <AnimatePresence>
         { !fixed &&

@@ -122,6 +122,8 @@
 
 .lightContact {
   @include menuItem;
+  width: 100%;
+  display: inline;
   color: #fff;
 
   &:hover {

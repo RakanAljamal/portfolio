@@ -63,7 +63,7 @@ const FixedNavbar = ({ fixed, setOpen }) => {
         return <AnimatePresence>
             { fixed && <motion.div exit="exit" initial="hidden" animate="visible" variants={ fixedNavbarVariant }
                                    className={ styles.fixedMobileNavbar }>
-                <SidebarMenu dark={ true }/>
+                <SidebarMenu setOpen={setOpen} dark={ true }/>
             </motion.div>
             }        </AnimatePresence>
     }

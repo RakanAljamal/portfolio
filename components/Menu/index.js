@@ -43,9 +43,11 @@ const menuStyles = {
         color: '#fff',
         padding: 0,
         fontSize: 42,
+        position: 'relative',
+        overflow:'hidden'
     },
     bmItem: {
-        display: 'block',
+        display: 'inline',
         outline: 'none',
         margin: '20px 0'
 
@@ -55,7 +57,7 @@ const menuStyles = {
     }
 }
 
-const SidebarMenu = ({ dark }) => {
+const SidebarMenu = ({ dark, setOpen }) => {
     const [openMenu, setOpenMenu] = useState(false);
 
     useEffect(() => {
@@ -82,6 +84,12 @@ const SidebarMenu = ({ dark }) => {
             <a className={ styles.lightContact } style={ { fontSize: 26 } }>Intro</a>
             <a className={ styles.lightContact } style={ { fontSize: 26 } }>Skills</a>
             <a className={ styles.lightContact } style={ { fontSize: 26 } }>Projects</a>
+            <a className={ styles.lightContact }
+               style={ { fontSize: 26,position: 'absolute',bottom: '25%' }}
+               onClick={()=> {
+                   setOpen(true)
+                   setOpenMenu(false)
+               }}>Contact</a>
         </Menu>
 
 

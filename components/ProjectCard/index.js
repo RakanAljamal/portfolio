@@ -68,8 +68,11 @@ const ProjectInfo = ({ title, details, animationColor, items, href }) => {
         }
     }: cardInfo);
     const [showCardDetails, setShowCardDetails] = useState(false);
+    const [showCardOverlay, setShowCardOverlay] = useState(false);
     useEffect(() => {
         if (show) {
+            setShowCardOverlay(true);
+            console.log('Rendered')
             setTimeout(() => {
                 setCardInfoVariant(cardInfoCollapse)
                 setShowCardDetails(true);
@@ -87,7 +90,7 @@ const ProjectInfo = ({ title, details, animationColor, items, href }) => {
     return <motion.div ref={ ref } variants={ showCardDetails ? cardContainer : null } initial="start" animate="end"
                        className={ styles.cardInfoContainer }>
 
-        { show && <motion.div variants={ cardInfoVariant } initial="start" animate="end"
+        { showCardOverlay && <motion.div variants={ cardInfoVariant } initial="start" animate="end"
                       className={ styles.cardInfoOverlay }/> }
 
         { showCardDetails && <div ref={ ref } className={ styles.cardInfoDetails }>
@@ -116,8 +119,11 @@ const ProjectCard = ({ src, animationColor }) => {
     const { ref, show } = useInScreen();
     const [variant, setVariant] = useState(animateCard);
     const [showImage, setShowImage] = useState(false);
+    const [showCardContainer, setShowCardContainer] = useState(false);
     useEffect(() => {
         if (show) {
+            setShowCardContainer(true)
+            console.log('Rendered')
             setTimeout(() => {
                 setVariant(cardCollapse)
                 setShowImage(true);
@@ -131,7 +137,7 @@ const ProjectCard = ({ src, animationColor }) => {
                                            src={ src }
                                            alt="image"/> }
 
-                { show &&
+                { showCardContainer &&
                 <motion.div variants={ variant } initial="start" animate="end" className={ styles.cardContainer }>
 
                 </motion.div> }
