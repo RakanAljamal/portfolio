@@ -85,7 +85,7 @@ const SidebarMenu = ({ dark, setOpen }) => {
             <a className={ styles.lightContact } style={ { fontSize: 26 } }>Skills</a>
             <a className={ styles.lightContact } style={ { fontSize: 26 } }>Projects</a>
             <a className={ styles.lightContact }
-               style={ { fontSize: 26,position: 'absolute',bottom: '25%' }}
+               style={ { fontSize: 26,position: 'absolute',bottom: '25%', width:'100%' }}
                onClick={()=> {
                    setOpen(true)
                    setOpenMenu(false)
