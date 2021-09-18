@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 const Screen = ({ children, refresh, changeScreen }) => {
-    const [showScreen, setShowScreen] = useState(true);
+    const [loading, setLoading] = useState();
     useEffect(() => {
-        setInterval(() => {
-            setShowScreen(toggle => !toggle);
-        }, changeScreen)
-    }, [changeScreen])
+        setLoading(true);
+    }, [])
 
 
     return (
@@ -21,10 +19,10 @@ const Screen = ({ children, refresh, changeScreen }) => {
                 </div>
 
             </div>
-            <div className={ styles.mediumPc }>
-                <img alt="actions" src={ `${ window?.location.origin }/options.png` }/>
+            {loading && <div className={styles.mediumPc}>
+                <img alt="actions" src={`${window?.location.origin}/options.png`}/>
             </div>
-            <div className={ styles.mediumIcon }/>
+            }            <div className={ styles.mediumIcon }/>
             <div className={ styles.underlay }/>
             <div className={ styles.underlayBottom }/>
         </div>

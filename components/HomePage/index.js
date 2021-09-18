@@ -11,6 +11,10 @@ import FixedNavbar from "../Navbar/FixedNavbar";
 import { Footer } from "../Footer";
 import Modal from "../Modal";
 import Resume from "../Resume";
+import cardOne from '../../public/card-1.png'
+import cardTwo from '../../public/card-2.png'
+import { card } from "../ProjectCard/animations";
+
 
 const sajilniDetails = '\n' +
     '                Manage the whole application infrastructure including\n' +
@@ -47,58 +51,55 @@ export const HomePage = ({ initialState }) => {
     }, [forceRender])
 
 
-    if (loading) {
-        return <h1>Loading</h1>
-    }
 
     return (
         <>
-            <Modal open={ open } setOpen={ setOpen }/>
-            <Navbar setOpen={ setOpen } fixed={ fixedNavbar }/>
-            <FixedNavbar setOpen={ setOpen } fixed={ fixedNavbar }/>
-            <div className={ styles.homepageContainer } id="home">
+            <Modal open={open} setOpen={setOpen}/>
+            <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
+            <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/>
+            <div className={styles.homepageContainer} id="home">
                 <ShowMyInfo/>
-                <Screen changeScreen={ 15000 }>
-                    { forceRender && <InfoCounter
-                        initialState={ randomState }
-                        render={ () => setForceRender(false) }
-                        speed={ 25 }
-                        deleteSpeed={ 25 }
-                        dashTimer={ 400 }
-                        timeToShow={ 1000 }
-                        timeToEnd={ 2000 }
-                        indicator={ "_" }
+                <Screen changeScreen={15000}>
+                    {forceRender && <InfoCounter
+                        initialState={randomState}
+                        render={() => setForceRender(false)}
+                        speed={25}
+                        deleteSpeed={25}
+                        dashTimer={400}
+                        timeToShow={1000}
+                        timeToEnd={2000}
+                        indicator={"_"}
                     />
                     }
                 </Screen>
             </div>
-            <SectionDivider setFixedNavbar={ setFixedNavbar }>
-                { <Skills/> }
+            <SectionDivider setFixedNavbar={setFixedNavbar}>
+                {<Skills/>}
             </SectionDivider>
-            { <Resume/> }
-            <ProjectsDivider fill={ '#FFF' }/>
-            <div className={ styles.projectsContainer }>
-                <MyProject setFixedNavbar={ setFixedNavbar }/>
+            {<Resume/>}
+            <ProjectsDivider fill={'#FFF'}/>
+            {<div className={styles.projectsContainer}>
+                <MyProject setFixedNavbar={setFixedNavbar}/>
                 <ProjectDetails
-                    src={ `${ window?.location.origin }/card-1.png` }
+                    src={cardOne}
                     animationColor='#000586'
                     title="Weight Watchers"
-                    href={ "https://www.ww.com/us/find-a-workshop" }
-                    details={ weightDetails }
-                    items={ ['NextJS', 'NodeJS', 'GraphQL', 'Express'] }
+                    href={"https://www.ww.com/us/find-a-workshop"}
+                    details={weightDetails}
+                    items={['NextJS', 'NodeJS', 'GraphQL', 'Express']}
                 />
                 <ProjectDetails
-                    src={ `${ window?.location.origin }/card-2.png` }
+                    src={cardTwo}
                     title="Sajilni"
                     href="https://www.sajilni.com"
                     animationColor='#98D551'
-                    details={ sajilniDetails }
-                    items={ ['MYSQL', 'AWS', 'Spring', 'JQuery'] }
+                    details={sajilniDetails}
+                    items={['MYSQL', 'AWS', 'Spring', 'JQuery']}
                 />
                 <br/>
                 <br/>
             </div>
-            <Footer setOpen={ setOpen }/>
+            } <Footer setOpen={setOpen}/>
         </>
 
     );

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { card, cardCollapse, cardContainer, cardInfo, cardInfoCollapse, cardOpenDuration } from './animations';
 import AnimatedCharacters from "./AnimatedCharacters";
 import { useInScreen } from "../../shared/hooks/useInScreen";
+import Image from "next/image";
 
 export const MyProject = ({setFixedNavbar}) => {
     const { ref, show } = useInScreen();
@@ -133,7 +134,7 @@ const ProjectCard = ({ src, animationColor }) => {
     return (
         <div className={ styles.projectContainer }>
             <div style={ { background: showImage && '#000' } } ref={ ref } className={ styles.animationContainer }>
-                { showImage && <motion.img variants={ card } className={ styles.cardImage }
+                { showImage && <Image className={ styles.cardImage }
                                            src={ src }
                                            alt="image"/> }
 

@@ -5,17 +5,17 @@
   border-bottom-left-radius: 5px;
   position: absolute;
   top: -850px;
-  left: 45%;
+  left: 50%;
   transition: all 0.4s ease-in-out;
   transform: translateX(-50%);
   z-index: 2;
+  overflow: hidden;
 
   @include phone {
-    left: 35%;
+    width: 90%;
   }
 
   img {
-    width: 130%;
     filter: blur(1px);
     transition: all 0.2s ease-in-out;
     background: #222;
@@ -37,7 +37,7 @@
 .downloadOverlay {
   position: absolute;
   height: 100%;
-  width: 130%;
+  width: 100%;
   top: -0.7px;
   left: 0;
   right: 0;
@@ -54,9 +54,7 @@
   align-items: center;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  @include phone {
-    width: 145%;
-  }
+
 }
 
 .resumeText {
