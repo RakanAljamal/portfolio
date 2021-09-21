@@ -26,7 +26,7 @@ const Screen = ({ children }) => {
                                 <Image width={50} height={50} src={githubLogo} alt="github"/>
                             </div>
                             <div className={styles.sourceCode}>
-                                <a target="_blank" href="https://github.com/RakanAljamal/portfolio">Source Code</a>
+                                <a rel="noreferrer"  target="_blank" href="https://github.com/RakanAljamal/portfolio">Source Code</a>
                             </div>
                             <div className={styles.imageContainer}>
                                 <Image width={50} height={50} src={linkedInLogo} alt="linkedin"/>
