@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import githubLogo from '../../public/github.png';
+import linkedInLogo from '../../public/linkedin.png';
 import Image from 'next/image';
 
 const Screen = ({ children }) => {
@@ -20,13 +21,18 @@ const Screen = ({ children }) => {
                     </div>
 
                     <div className={styles.codeScreenCTA}>
-                        <div className={styles.box}>
-                            <h3>{"<SourceCode />"}</h3>
+
+                            <div className={styles.imageContainer}>
+                                <Image width={50} height={50} src={githubLogo} alt="github"/>
+                            </div>
+                            <div className={styles.sourceCode}>
+                                <a target="_blank" href="https://github.com/RakanAljamal/portfolio">Source Code</a>
+                            </div>
+                            <div className={styles.imageContainer}>
+                                <Image width={50} height={50} src={linkedInLogo} alt="linkedin"/>
+                            </div>
                         </div>
-                        <div className={styles.absDiv}>
-                            <Image width={100} height={100} src={githubLogo} alt="github"/>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>

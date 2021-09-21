@@ -15,6 +15,7 @@ export default function Home({ initialState }) {
                 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"/>
                 <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,500;1,300&display=swap" rel="stylesheet" />
                 <title>Rakan</title>
             </Head>
             {/*<Particles*/}

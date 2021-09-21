@@ -170,16 +170,33 @@
 .codeScreenCTA {
   min-height: 40%;
   color: #fff;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-
+  padding: 0 20%;
 }
-.absDiv{
+
+.imageContainer{
   position: relative;
 }
+
+.sourceCode {
+  font-family: 'Source Code Pro', monospace;
+  align-self: flex-end;
+  padding: 5px 40px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  color: #fff;
+  background: #464646;
+  transition: all ease-in-out 0.4s;
+  &:hover {
+    cursor: pointer;
+    background: #fefefe;
+    color: #222;
+  }
+
+}
+
 .box {
   position: relative;
   height: 100px;
