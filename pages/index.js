@@ -36,7 +36,7 @@ export default function Home({ initialState }) {
                 <meta property="og:image:height" content="789"/>
                 <meta property="og:description" content="This is a website built in nextjs"/>
                 <meta property="og:url" content="rakan.work"/>
-                <meta property="og:type" content="portfolio"/>
+                <meta property="og:type" content="website"/>
 
 
             </Head>
