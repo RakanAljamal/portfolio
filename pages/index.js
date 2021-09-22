@@ -35,6 +35,9 @@ export default function Home({ initialState }) {
                 <meta property="og:image:width" content="488"/>
                 <meta property="og:image:height" content="789"/>
                 <meta property="og:description" content="This is a website built in nextjs"/>
+                <meta property="og:url" content="rakan.work"/>
+                <meta property="og:type" content="portfolio"/>
+
 
             </Head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
