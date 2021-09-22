@@ -65,7 +65,7 @@ export const HomePage = ({ initialState }) => {
                         deleteSpeed={25}
                         dashTimer={400}
                         timeToShow={1000}
-                        timeToEnd={2000}
+                        timeToEnd={10000}
                         indicator={"_"}
                     />
                     }

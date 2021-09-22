@@ -44,11 +44,11 @@ const Navbar = ({ fixed, setOpen }) => {
     return <AnimatePresence>
         { !fixed &&
         <motion.div animate={ { y: 0 } } initial={ { y: -100 } } exit={ { y: -100 } } className={ styles.navbar }>
-            <div>
+            <div id="home">
                 <div className={ styles.navbarGroup }>
                     <motion.div variants={ navbarVariant } initial="hidden" animate="visible" className={ styles.menu }>
                         <ul>
-                            <motion.li variants={ menuItemVariant } onClick={()=>scrollToElement(document.getElementById('home'))}      >Intro</motion.li>
+                            <motion.li variants={ menuItemVariant } onClick={()=>scrollToElement(document.getElementById('home'),100)}      >Intro</motion.li>
                             <motion.li variants={ menuItemVariant } onClick={()=>scrollToElement(document.getElementById('skills'),400)}>Skills</motion.li>
                             <motion.li variants={ menuItemVariant } onClick={()=>scrollToElement(document.getElementById('projects'))}  >Projects</motion.li>
                         </ul>

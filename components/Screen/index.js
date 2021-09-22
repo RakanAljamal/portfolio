@@ -24,10 +24,10 @@ const Screen = ({ children }) => {
                     <div className={styles.codeScreenCTA}>
 
                         <div className={styles.sourceCodeContainer}>
-                            <div className={styles.sourceCode}>
-                                <a rel="noreferrer" target="_blank" href="https://github.com/RakanAljamal/portfolio">Source
-                                    Code</a>
-                            </div>
+
+                                <a className={styles.sourceCode} rel="noreferrer" target="_blank" href="https://github.com/RakanAljamal/portfolio">
+                                        Source Code
+                                </a>
                         </div>
                         <div>
                             <div className={styles.imageContainer}>

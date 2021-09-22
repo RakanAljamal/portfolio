@@ -87,7 +87,7 @@ const SidebarMenu = ({ dark, setOpen }) => {
             customBurgerIcon={false}
             styles={menuStyles}
             width={'300px'}>
-            <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('home')}>Intro</a>
+            <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('home',100)}>Intro</a>
             <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('skills',400)}>Skills</a>
             <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('projects')}>Projects</a>
             <a className={styles.lightContact}

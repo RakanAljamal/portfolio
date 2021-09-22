@@ -80,7 +80,7 @@ const FixedNavbar = ({ fixed, setOpen }) => {
                                 <div className={styles.fixedMenu}>
                                     <ul>
                                         <motion.li className={styles.menuItem} variants={menuItemVariant}
-                                                   onClick={() => scrollToElement(document.getElementById('home'))}>Intro
+                                                   onClick={() => scrollToElement(document.getElementById('home'),100)}>Intro
                                         </motion.li>
                                         <motion.li className={styles.menuItem} variants={menuItemVariant}
                                                    onClick={() => scrollToElement(document.getElementById('skills'), 400)}>Skills
