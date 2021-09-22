@@ -32,10 +32,11 @@ export const HomePage = ({ initialState }) => {
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [fixedNavbar, setFixedNavbar] = useState(false);
     const [open, setOpen] = useState(false);
+    const [mount, setIsMount] = useState(false);
 
 
     useEffect(() => {
-        if ( !forceRender) {
+        if (!forceRender) {
             setForceRender(true);
             setRandomState(prevRandom => {
                 let newRandom = initialState[Math.floor(Math.random() * initialState.length)];
@@ -45,15 +46,15 @@ export const HomePage = ({ initialState }) => {
                 return newRandom;
             });
         }
+        setIsMount(true);
     }, [forceRender])
-
 
 
     return (
         <>
-            <Modal open={open} setOpen={setOpen}/>
-            <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
-            <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/>
+            {mount && <><Modal open={open} setOpen={setOpen}/>
+                <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
+                <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/></>}
             <div className={styles.homepageContainer} id="home">
                 <ShowMyInfo/>
                 <Screen>

@@ -14,7 +14,7 @@ export const params = {
             value: 40,
             random: true,
             anim: {
-                speed: 4,
+                speed: 1,
                 size_min: 10
             }
         },
@@ -24,7 +24,7 @@ export const params = {
 
         },
         move: {
-            speed: 0.1,
+            speed: 0.001,
             out_mode: "bounce"
         }
     },
