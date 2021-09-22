@@ -173,9 +173,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20%;
 }
 
+.sourceCodeContainer {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+
+  @include tablet {
+    width: unset;
+  }
+}
 .imageContainer{
   position: relative;
 }
