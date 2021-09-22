@@ -22,7 +22,7 @@ export default function Home({ initialState }) {
                       rel="stylesheet"/>
                 <title>Rakan Portfolio</title>
                 <meta name="description" content="This is a portfolio written in NextJS"/>
-                <meta name="keywords" content="rakan, rakan portfolio, rakan work, rakan dev, rakan nextjs"/>
+                <meta name="keywords" content="rakan, rakan portfolio, rakan work, rakan dev, rakan nextjs, rakan aljamal, Rakan Aljamal, Rakan Aljamal Work"/>
                 <meta name="author" content="Rakan Aljamal"/>
                 <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png"/>
                 <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png"/>
