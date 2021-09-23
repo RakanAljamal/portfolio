@@ -76,7 +76,6 @@ export const HomePage = ({ initialState }) => {
                 {<Skills/>}
             </SectionDivider>
             {<Resume/>}
-            <MyJob />
             <ProjectsDivider fill={'#FFF'}/>
             {<div className={styles.projectsContainer}>
                 <MyProject setFixedNavbar={setFixedNavbar}/>
@@ -98,6 +97,8 @@ export const HomePage = ({ initialState }) => {
                 />
                 <br/>
                 <br/>
+                <MyJob />
+
             </div>
             } <Footer setOpen={setOpen}/>
         </>
