@@ -5,7 +5,12 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-
+                    <link
+                        rel="preload"
+                        href="/public/fonts/Gilory/Gilroy-ExtraBold.otf"
+                        as="font"
+                        crossOrigin=""
+                    />
                     <meta charSet="UTF-8"/>
                     <meta name="viewport"
                           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi"/>

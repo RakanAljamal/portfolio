@@ -30,3 +30,11 @@ a {
   background-position: 50% 50%;
   opacity: 0.48;
 }
+
+@font-face {
+  font-family: "Gilory";
+  src: url("/public/fonts/Gilory/Gilroy-ExtraBold.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}

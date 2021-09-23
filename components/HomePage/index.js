@@ -13,6 +13,7 @@ import Modal from "../Modal";
 import Resume from "../Resume";
 import cardOne from '../../public/card-1.png'
 import cardTwo from '../../public/card-2.png'
+import MyJob from "../MyJob";
 
 
 const sajilniDetails = '\n' +
@@ -75,6 +76,7 @@ export const HomePage = ({ initialState }) => {
                 {<Skills/>}
             </SectionDivider>
             {<Resume/>}
+            <MyJob />
             <ProjectsDivider fill={'#FFF'}/>
             {<div className={styles.projectsContainer}>
                 <MyProject setFixedNavbar={setFixedNavbar}/>
