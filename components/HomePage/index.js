@@ -78,6 +78,8 @@ export const HomePage = ({ initialState }) => {
             {<Resume/>}
             <ProjectsDivider fill={'#FFF'}/>
             {<div className={styles.projectsContainer}>
+                <MyJob />
+
                 <MyProject setFixedNavbar={setFixedNavbar}/>
                 <ProjectDetails
                     src={cardOne}
@@ -97,7 +99,6 @@ export const HomePage = ({ initialState }) => {
                 />
                 <br/>
                 <br/>
-                <MyJob />
 
             </div>
             } <Footer setOpen={setOpen}/>
