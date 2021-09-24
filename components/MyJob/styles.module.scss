@@ -67,6 +67,10 @@
 }
 .jobDetails {
   padding: 0 48px 48px;
+
+  @include tablet {
+    padding: 0 24px 24px;
+  }
 }
 
 .jobDetailsTitle {

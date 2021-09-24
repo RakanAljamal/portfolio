@@ -8,8 +8,8 @@ import Modal from "../components/Modal";
 export default function Home({ initialState }) {
     return (
         <div>
-            <Particles
-                params={params}/>
+            {/*<Particles*/}
+            {/*    params={params}/>*/}
             <HomePage initialState={initialState}/>
         </div>
     )
