@@ -443,8 +443,8 @@ export function Icon3() {
             <path d="M174.311 24.8965H157.979V35.1033H174.311V24.8965Z" fill="white"/>
             <path d="M178.713 26.9276L175.108 28.4427V31.6003L178.713 33.1153H180.02V26.9276H178.713Z" fill="white"/>
             <defs>
-                <filter id="filter0_d" x="41.1387" y="0" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter0_d" x="41.1387" y="0" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                     <feOffset dx="5" dy="5"/>
                     <feGaussianBlur stdDeviation="7.5"/>
@@ -452,8 +452,8 @@ export function Icon3() {
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
-                <filter id="filter1_d" x="183" y="103" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter1_d" x="183" y="103" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                     <feOffset dx="5" dy="5"/>
                     <feGaussianBlur stdDeviation="7.5"/>
@@ -461,8 +461,8 @@ export function Icon3() {
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
-                <filter id="filter2_d" x="0" y="103" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter2_d" x="0" y="103" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                     <feOffset dx="5" dy="5"/>
                     <feGaussianBlur stdDeviation="7.5"/>
@@ -470,8 +470,8 @@ export function Icon3() {
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
-                <filter id="filter3_d" x="138" y="0" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <filter id="filter3_d" x="138" y="0" width="71.1381" height="70.8561" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                     <feOffset dx="5" dy="5"/>
                     <feGaussianBlur stdDeviation="7.5"/>
