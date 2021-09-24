@@ -9,11 +9,10 @@ const MyJob = () => {
             <Icon3 />
             <div className={styles.jobDetails}>
                 <h2 className={styles.jobDetailsTitle}>
-                    Bring Technology To Your
-                    Comfrotable Home
+                    Bring Modern Technology To Your Website
                 </h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                <p className={styles.jobDetailsInfo}>
+                    PWA , Responsive , and Optimization are my main key features when working on websites
                 </p>
             </div>
             </div>
@@ -21,11 +20,11 @@ const MyJob = () => {
                 <Icon2 />
                 <div className={styles.jobDetails}>
                     <h2 className={styles.jobDetailsTitle}>
-                        Bring Technology To Your
-                        Comfrotable Home
+                        Make Your business To Be Better Famous In Internet
                     </h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    <p className={styles.jobDetailsInfo}>
+                        Transferring CSR into SSR to optimize SEO,
+                        High availability and Vertical Scaling
                     </p>
                 </div>
 
@@ -34,11 +33,11 @@ const MyJob = () => {
                 <Icon />
                 <div className={styles.jobDetails}>
                     <h2 className={styles.jobDetailsTitle}>
-                        Bring Technology To Your
-                        Comfrotable Home
+                        Build Your Digital Product That Suitable For Your Need
                     </h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    <p className={styles.jobDetailsInfo}>
+                        From blogs to video streaming, the sky is the limit,
+                        Providing a modern dashboard to control your content
                     </p>
                 </div>
             </div>

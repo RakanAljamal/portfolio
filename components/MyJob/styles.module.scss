@@ -29,7 +29,6 @@
   width: 380px;
   justify-items: center;
   height: 525px;
-
   background: #FFFFFF;
 
   box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
@@ -40,6 +39,10 @@
   }
   @include phone {
     width: 100%;
+  }
+
+  svg {
+    margin-top: 48px;
   }
 }
 
@@ -63,16 +66,24 @@
   grid-area: job3;
 }
 .jobDetails {
-  padding: 48px;
+  padding: 0 48px 48px;
 }
 
 .jobDetailsTitle {
-  font-size: 20px;
+  font-family: Gilory,'sans-serif';
+  font-size: 16.5px;
   line-height: 30px;
-  font-weight: 1000;
+  font-weight: 700;
   letter-spacing: 0.05em;
-
-  /* Blue_01 */
-
   color: #1F3F68;
+}
+
+.jobDetailsInfo {
+  font-family: Gilroy, 'sans-serif';
+  font-size: 15px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  color: #1F3F68;
+  margin: 16px 0;
+  opacity: 0.6;
 }
