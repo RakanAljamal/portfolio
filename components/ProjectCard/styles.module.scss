@@ -98,7 +98,7 @@ $card-height: 720;
   width: 600px;
   height: $card-info-height + px;
   background: #fff;
-  font-family: 'Bigshot One', cursive;
+  font-family: Mosk, 'sans-serif';
   font-size: 28px;
   font-weight: 700;
   line-height: 4.5rem;
@@ -134,7 +134,7 @@ $card-height: 720;
 }
 
 .myProject {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: Mosk, 'sans-serif';;
   font-size: 50px;
   height: 200px;
   position: relative;
@@ -146,7 +146,7 @@ $card-height: 720;
   padding: 0;
 
   li {
-    font-family: monospace;
+    font-family: monospace  ;
     border-bottom: 1px dotted #BBB;
     background: #fff;
     color: #222;

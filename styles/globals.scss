@@ -33,8 +33,16 @@ a {
 
 @font-face {
   font-family: "Gilory";
-  src: url("/public/fonts/Gilory/Gilroy-ExtraBold.otf");
+  src: url("/fonts/Gilory/Gilroy-ExtraBold.otf");
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mosk";
+  src: url("/fonts/Mosk/most_ultra_bold.ttf");
+  font-style: normal;
+  font-weight: 900;
   font-display: swap;
 }

@@ -7,6 +7,13 @@
   font-size: 40px;
   margin: 10px 100px;
   width: 70%;
+  @include large-screen {
+    margin: auto;
+  }
+
+  @include phone {
+    width: 95%;
+  }
   border-radius: 50px;
 }
 
@@ -58,6 +65,7 @@
 }
 
 .contactMe {
+  align-self: baseline;
   .myInfo {
     display: inline-block;
 
@@ -65,7 +73,6 @@
       cursor: default;
     }
 
-    transform: rotate(-5deg);
     font-family: 'Bad Script', cursive;
     font-size: 25px;
     margin-bottom: 5px;
@@ -79,7 +86,6 @@
   @include contactMe;
 
   @include large-screen {
-    width: 95%;
     margin-bottom: 100px;
     margin-top: 35px;
   }
@@ -214,4 +220,23 @@
       color: rgba(4, 189, 228, 1);
     }
   }
+}
+
+.displayInfo {
+  color: $light-white;
+  font-weight: 900;
+  font-size: 60px;
+  margin: 10px 100px;
+  border-radius: 50px;
+
+
+  @include macbook {
+    padding-right: 20px;
+    font-size: 45px;
+  }
+  @include phone {
+    padding-right: 0;
+    font-size: 35px;
+  }
+  font-family: Mosk, 'sans-serif';
 }

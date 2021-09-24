@@ -1,4 +1,5 @@
 // SCREEN BREAKPOINTS
+$screen-xlg-min: 1400px;
 $screen-lg-min: 1330px;
 $screen-mlg-min: 1180px;
 $screen-md-min: 992px;
@@ -35,3 +36,9 @@ $screen-border: #414360;
   }
 }
 
+
+@mixin macbook {
+  @media (max-width: $screen-xlg-min) {
+    @content;
+  }
+}

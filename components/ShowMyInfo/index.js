@@ -25,7 +25,7 @@ export default function ShowMyInfo() {
                 })
             }
         </motion.h3>
-        <p>
+        <p className={styles.displayInfo}>
             Creative Software Engineer based in Jordan who have the desire to keep learning
             anything related to modern development,
 
