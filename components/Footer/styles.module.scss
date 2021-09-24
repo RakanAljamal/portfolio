@@ -4,7 +4,7 @@
   @include contactMe;
   width: 100%;
   text-align: center;
-  margin: 100px 0 200px 0;
+  margin: 100px 0 200px 0 !important;
 
   @include large-tablet {
     padding: 0 15px;
