@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './styles.module.scss';
 export function WideScreen() {
         return (
             <svg
@@ -7,6 +7,7 @@ export function WideScreen() {
                 width="826"
                 height="495"
                 fill="none"
+                className={styles.newScreenVector}
                 viewBox="0 0 826 495"
             >
                     <path
