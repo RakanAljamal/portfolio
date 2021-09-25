@@ -290,4 +290,9 @@
 .newScreenVector {
   padding-right: 20px;
   width: 80%;
+
+  @include tablet {
+    width: 100%;
+    padding: 0 10px;
+  }
 }
