@@ -14,6 +14,7 @@ import Resume from "../Resume";
 import cardOne from '../../public/card-1.png'
 import cardTwo from '../../public/card-2.png'
 import MyJob from "../MyJob";
+import {WideScreen} from "../Screen/vectors";
 
 
 const sajilniDetails = '\n' +
@@ -58,19 +59,20 @@ export const HomePage = ({ initialState }) => {
                 <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/></>}
             <div className={styles.homepageContainer} id="home">
                 <ShowMyInfo/>
-                <Screen>
-                    {forceRender && <InfoCounter
-                        initialState={randomState}
-                        render={() => setForceRender(false)}
-                        speed={25}
-                        deleteSpeed={25}
-                        dashTimer={400}
-                        timeToShow={1000}
-                        timeToEnd={10000}
-                        indicator={"_"}
-                    />
-                    }
-                </Screen>
+                <WideScreen />
+                {/*<Screen>*/}
+                {/*    {forceRender && <InfoCounter*/}
+                {/*        initialState={randomState}*/}
+                {/*        render={() => setForceRender(false)}*/}
+                {/*        speed={25}*/}
+                {/*        deleteSpeed={25}*/}
+                {/*        dashTimer={400}*/}
+                {/*        timeToShow={1000}*/}
+                {/*        timeToEnd={10000}*/}
+                {/*        indicator={"_"}*/}
+                {/*    />*/}
+                {/*    }*/}
+                {/*</Screen>*/}
             </div>
             <SectionDivider setFixedNavbar={setFixedNavbar}>
                 {<Skills/>}
