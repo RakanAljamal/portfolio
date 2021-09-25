@@ -92,7 +92,10 @@ export const InfoCounter = ({
 
     return (
         <div className={ styles.whoAmI }>
-            <p><span className={ styles.rootUser }>Rakan@WEBSITE $ </span>{ name } <span
+            <p><span className={ styles.rootUser }>Rakan@WEBSITE $ </span>
+                <span className={styles.terminalText}>
+                    { name }
+                </span> <span
                 className={ flashUnderscore ? styles.hidden : styles.visible }>{ indicator }</span></p>
         </div>
     )

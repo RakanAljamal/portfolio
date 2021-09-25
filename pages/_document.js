@@ -12,8 +12,6 @@ export default class MyDocument extends Document {
                         crossOrigin=""
                     />
                     <meta charSet="UTF-8"/>
-                    <meta name="viewport"
-                          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi"/>
                     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet"/>
@@ -22,7 +20,6 @@ export default class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,500;1,300&display=swap"
                           rel="stylesheet"/>
-                    <title>Rakan Portfolio</title>
                     <meta name="description" content="This is a portfolio written in NextJS"/>
                     <meta name="keywords"
                           content="rakan, rakan portfolio, rakan work, rakan dev, rakan nextjs, rakan aljamal, Rakan Aljamal, Rakan Aljamal Work"/>
@@ -39,13 +36,10 @@ export default class MyDocument extends Document {
                     <meta property="og:description" content="This is a website built in nextjs"/>
                     <meta property="og:url" content="rakan.work"/>
                     <meta property="og:type" content="website"/>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
 
 
 
                     <meta charSet="UTF-8"/>
-                    <meta name="viewport"
-                          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi"/>
                     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet"/>
@@ -54,7 +48,6 @@ export default class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,500;1,300&display=swap"
                           rel="stylesheet"/>
-                    <title>Rakan Portfolio</title>
                     <meta name="description" content="This is a portfolio written in NextJS"/>
                     <meta name="keywords"
                           content="rakan, rakan portfolio, rakan work, rakan dev, rakan nextjs, rakan aljamal, Rakan Aljamal, Rakan Aljamal Work"/>

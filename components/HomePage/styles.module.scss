@@ -33,7 +33,6 @@
 }
 
 .whoAmI {
-
   font-family: 'Source Code Pro', monospace;
   text-align: left;
   display: block;
@@ -42,20 +41,55 @@
   top: 0;
   left: 50%;
   width: 90%;
-
   & p {
     font-weight: 500;
   }
-
   transform: translate(-50%, 0);
+
+  @include large-screen {
+    width: 65%;
+    left: 55%;
+  }
+
+  @include large-tablet {
+    width: 80%;
+    left: 60%;
+  }
+
+  @include tablet {
+    width: 90%;
+    left: 50%;
+  }
+
+  @include phone {
+    line-height:2px;
+  }
+
 }
 
 
 .rootUser {
+  font-size: 14px;
   color: greenyellow;
   font-weight: 650;
+  @include macbook{
+    font-size: 12px;
+  }
+  @include tablet {
+    font-size: 10px;
+  }
+  @include phone {
+    font-size: 5px;
+    line-height:2px;
+  }
 }
 
+.terminalText {
+  @extend .rootUser;
+  color: #fff;
+  font-weight: 400;
+
+}
 .visible {
   visibility: visible;
 }
