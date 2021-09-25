@@ -304,3 +304,14 @@
   x: 325px;
   y: 35px;
 }
+
+.verticalScreen {
+  @media (max-width: 375px) {
+    padding:  30px;
+  }
+
+
+  @media (max-width: 325px) {
+    padding:  40px;
+  }
+}
