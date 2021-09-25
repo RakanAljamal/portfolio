@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { ProjectsDivider, SectionDivider } from "../../shared/svg";
-import { InfoCounter } from "../InfoCounter";
-import Screen from "../Screen";
 import Navbar from "../Navbar";
 import Skills from "../Skills";
 import ShowMyInfo from "../ShowMyInfo";
@@ -30,26 +28,14 @@ const weightDetails = '- Manage a cutting-edge Studio finder application which d
 
 export const HomePage = ({ initialState }) => {
 
-    const [forceRender, setForceRender] = useState(true);
-    const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [fixedNavbar, setFixedNavbar] = useState(false);
     const [open, setOpen] = useState(false);
     const [mount, setIsMount] = useState(false);
 
-
-    useEffect(() => {
-        if (!forceRender) {
-            setForceRender(true);
-            setRandomState(prevRandom => {
-                let newRandom = initialState[Math.floor(Math.random() * initialState.length)];
-                while (newRandom === prevRandom) {
-                    newRandom = initialState[Math.floor(Math.random() * initialState.length)];
-                }
-                return newRandom;
-            });
-        }
+    useEffect(()=>{
         setIsMount(true);
-    }, [forceRender])
+    },[])
+
 
 
     return (
@@ -59,20 +45,7 @@ export const HomePage = ({ initialState }) => {
                 <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/></>}
             <div className={styles.homepageContainer} id="home">
                 <ShowMyInfo/>
-                <WideScreen />
-                {/*<Screen>*/}
-                {/*    {forceRender && <InfoCounter*/}
-                {/*        initialState={randomState}*/}
-                {/*        render={() => setForceRender(false)}*/}
-                {/*        speed={25}*/}
-                {/*        deleteSpeed={25}*/}
-                {/*        dashTimer={400}*/}
-                {/*        timeToShow={1000}*/}
-                {/*        timeToEnd={10000}*/}
-                {/*        indicator={"_"}*/}
-                {/*    />*/}
-                {/*    }*/}
-                {/*</Screen>*/}
+                <WideScreen initialState={initialState}/>
             </div>
             <SectionDivider setFixedNavbar={setFixedNavbar}>
                 {<Skills/>}

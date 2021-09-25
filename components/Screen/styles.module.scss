@@ -41,12 +41,10 @@
 .main {
 
   overflow: hidden;
-  background: $light-white;
   position: relative;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px solid #000;
   margin: 0 auto;
   height: 352px;
   animation-duration: 4s;
@@ -56,9 +54,7 @@
 
   &:before {
     content: " ";
-    border: #ffffff40 9px solid;;
     position: absolute;
-    border-radius: 1rem;
     top: -5px;
     bottom: -5px;
     left: -5px;
@@ -159,7 +155,6 @@
   transform: scale(1);
   position: relative;
   z-index: 10;
-  background: #222;
   @include animation(turnOnScreen);
   @include screenSize;
   display: flex;
@@ -201,7 +196,6 @@
   font-family: 'Source Code Pro', monospace;
   align-self: flex-end;
   padding: 5px 40px;
-  border-top-left-radius: 7px;
   border-top-right-radius: 7px;
   color: #fff;
   background: #464646;
@@ -295,4 +289,10 @@
     width: 100%;
     padding: 0 10px;
   }
+}
+
+.terminal {
+  width: 500px;
+  x: 325px;
+  y: 35px;
 }
