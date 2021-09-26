@@ -61,9 +61,6 @@
     left: 50%;
   }
 
-  @include phone {
-    line-height:2px;
-  }
 
 }
 
@@ -76,11 +73,10 @@
     font-size: 12px;
   }
   @include tablet {
-    font-size: 10px;
+    font-size: 11px;
   }
-  @include phone {
-    font-size: 5px;
-    line-height:2px;
+  @media (max-width: 375px) {
+    font-size: 9px;
   }
 }
 

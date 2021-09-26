@@ -8,7 +8,7 @@ export function WideScreen({initialState}) {
     const [forceRender, setForceRender] = useState(true);
     const [randomState, setRandomState] = useState(initialState[Math.floor(Math.random() * initialState.length)]);
     const [mount,setMount] = useState(false);
-    const { isTablet } = useScreen();
+        const { isTablet } = useScreen();
 
     useEffect(() => {
         if (!forceRender) {
@@ -27,7 +27,11 @@ export function WideScreen({initialState}) {
     if(!mount){
         return <div></div>
     }
-    return isTablet ? <VerticalScreen /> : (
+    return isTablet ? <VerticalScreen
+        forceRender={forceRender}
+        setForceRender={setForceRender}
+        randomState={randomState}
+    /> : (
         <div style={{position:'relative', width:'100%'}}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -265,7 +269,7 @@ export function WideScreen({initialState}) {
     );
 }
 
-export function VerticalScreen() {
+export function VerticalScreen({randomState,forceRender,setForceRender}) {
     return (
         <div style={{position:'relative'}}>
             <svg
@@ -610,6 +614,19 @@ export function VerticalScreen() {
                     </filter>
                 </defs>
             </svg>
+            <Screen>
+                {forceRender && <InfoCounter
+                    initialState={randomState}
+                    render={() => setForceRender(false)}
+                    speed={25}
+                    deleteSpeed={25}
+                    dashTimer={400}
+                    timeToShow={1000}
+                    timeToEnd={10000}
+                    indicator={"_"}
+                /> }
+            </Screen>
+
         </div>
     );
 }
