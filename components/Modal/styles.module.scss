@@ -61,15 +61,15 @@
   }
 
   a {
-    font-family: Butler;
+    font-family: 'Quicksand', sans-serif;
     font-size: 27px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 3rem;
+    margin-bottom: 5px;
     letter-spacing: -.036rem;
 
     @include large-screen {
       font-size: 24px;
-      font-weight: 600;
 
       &:last-child {
         font-size: 20px;
@@ -87,7 +87,7 @@
 }
 
 .clickableLink {
-  border-bottom: 3px solid #cbe3ff;
+  border-bottom: 1px dotted #cbe3ff;
 }
 
 @mixin contactDetail {
@@ -143,13 +143,13 @@
 
   @include large-screen {
     position: absolute;
-    top: 170px;
+    top: 180px;
     right: 46px;
     font-size: 18px;
   }
 
   @include tablet {
-    top: 158px;
+    top: 170px;
   }
 
 

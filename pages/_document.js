@@ -12,6 +12,8 @@ export default class MyDocument extends Document {
                         crossOrigin=""
                     />
                     <meta charSet="UTF-8"/>
+                    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
                     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet"/>
@@ -20,6 +22,7 @@ export default class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap" rel="stylesheet"/>
                     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,500;1,300&display=swap"
                           rel="stylesheet"/>
+                    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
                     <meta name="description" content="This is a portfolio written in NextJS"/>
                     <meta name="keywords"
                           content="rakan, rakan portfolio, rakan work, rakan dev, rakan nextjs, rakan aljamal, Rakan Aljamal, Rakan Aljamal Work"/>
