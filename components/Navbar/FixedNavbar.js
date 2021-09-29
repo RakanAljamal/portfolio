@@ -57,14 +57,14 @@ const fixedNavbarVariant = {
     }
 }
 
-const FixedNavbar = ({ fixed, setOpen }) => {
+const FixedNavbar = ({ fixed, setOpen, setFixedNavbar }) => {
     const { isTablet } = useScreen();
 
     if (isTablet) {
         return <AnimatePresence>
             {fixed && <motion.div exit="exit" initial="hidden" animate="visible" variants={fixedNavbarVariant}
                                   className={styles.fixedMobileNavbar}>
-                <SidebarMenu setOpen={setOpen} dark={true}/>
+                <SidebarMenu setFixedNavbar={setFixedNavbar} setOpen={setOpen} dark={true}/>
             </motion.div>
             }        </AnimatePresence>
     }

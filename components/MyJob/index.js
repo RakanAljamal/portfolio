@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './styles.module.scss';
 import {Icon, Icon2, Icon3} from "./vectors";
+import { useInScreen } from "../../shared/hooks/useInScreen";
 
-const MyJob = () => {
+const MyJob = ({setFixedNavbar}) => {
+    const {ref,show} = useInScreen();
+
+    useEffect(()=>{
+        if(show){
+            setFixedNavbar(true);
+        }
+    },[show])
     return (
-        <div className={styles.jobsContainer}>
+        <div ref={ref} className={styles.jobsContainer}>
             <div className={styles.job1}>
             <Icon3 />
             <div className={styles.jobDetails}>

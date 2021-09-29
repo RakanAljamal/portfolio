@@ -41,8 +41,8 @@ export const HomePage = ({ initialState }) => {
     return (
         <>
             {mount && <><Modal open={open} setOpen={setOpen}/>
-                <Navbar setOpen={setOpen} fixed={fixedNavbar}/>
-                <FixedNavbar setOpen={setOpen} fixed={fixedNavbar}/></>}
+                <Navbar setFixedNavbar={setFixedNavbar} setOpen={setOpen} fixed={fixedNavbar}/>
+                <FixedNavbar setFixedNavbar={setFixedNavbar} setOpen={setOpen} fixed={fixedNavbar}/></>}
             <div className={styles.homepageContainer} id="home">
                 <ShowMyInfo/>
                 <WideScreen initialState={initialState}/>
@@ -53,7 +53,7 @@ export const HomePage = ({ initialState }) => {
             {<Resume/>}
             <ProjectsDivider fill={'#FFF'}/>
             {<div className={styles.projectsContainer}>
-                <MyJob />
+                <MyJob setFixedNavbar={setFixedNavbar}/>
 
                 <MyProject setFixedNavbar={setFixedNavbar}/>
                 <ProjectDetails

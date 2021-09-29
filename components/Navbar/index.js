@@ -35,11 +35,11 @@ const menuItemVariant = {
         }
     }
 }
-const Navbar = ({ fixed, setOpen }) => {
+const Navbar = ({ fixed, setOpen, setFixedNavbar }) => {
     const { isTablet } = useScreen();
 
     if (isTablet) {
-        return <SidebarMenu setOpen={setOpen}/>
+        return <SidebarMenu setFixedNavbar={setFixedNavbar} setOpen={setOpen}/>
     }
     return <AnimatePresence>
         { !fixed &&

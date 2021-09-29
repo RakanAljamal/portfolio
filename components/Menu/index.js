@@ -59,7 +59,7 @@ const menuStyles = {
     }
 }
 
-const SidebarMenu = ({ dark, setOpen }) => {
+const SidebarMenu = ({ dark, setOpen,setFixedNavbar }) => {
     const [openMenu, setOpenMenu] = useState(false);
 
     useEffect(() => {
@@ -75,9 +75,10 @@ const SidebarMenu = ({ dark, setOpen }) => {
     const handleMenuChange = (state) => {
         setOpenMenu(state.isOpen);
     }
-    const handleScroll = (elementId, offsetRoot) => {
+    const handleScroll = (elementId, offsetRoot,fixedNavbar) => {
         setOpenMenu(false);
         scrollToElement(document.getElementById(elementId),offsetRoot)
+        setFixedNavbar(!!fixedNavbar)
     }
     return <div className={styles.mobileNavbar}>
         <AiOutlineMenu style={{ color: dark ? '#222' : null }} onClick={() => setOpenMenu(state => !state)}/>
@@ -89,7 +90,7 @@ const SidebarMenu = ({ dark, setOpen }) => {
             width={'300px'}>
             <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('home',100)}>Intro</a>
             <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('skills',400)}>Skills</a>
-            <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('projects')}>Projects</a>
+            <a className={styles.lightContact} style={{ fontSize: 26 }} onClick={()=>handleScroll('projects',0,true)}>Projects</a>
             <a className={styles.lightContact}
                style={{ fontSize: 26, position: 'absolute', bottom: '25%', width: '100%' }}
                onClick={() => {
